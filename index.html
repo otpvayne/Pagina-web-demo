@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="La Casa del Kumis - Kumis artesanal y natural en tu ciudad" />
+  <title>La Casa del Kumis</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header class="sticky-header">
+    <nav class="header-nav">
+      <a href="index.html" class="logo">La Casa del Kumis</a>
+      <ul class="menu">
+        <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sucursales.html">Sucursales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio">
+    <!-- Carrusel principal -->
+    <div class="carousel">
+      <div class="slides">
+        <img src="images/slide1.jpg" alt="Slide 1" />
+        <img src="images/slide2.jpg" alt="Slide 2" />
+        <img src="images/slide3.jpg" alt="Slide 3" />
+      </div>
+      <div class="indicators">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </div>
+
+    <!-- Carrusel de productos pequeño -->
+    <div class="product-carousel">
+      <button class="prev">&#10094;</button>
+      <div class="product-track">
+        <div class="product-slide"><img src="images/kumis1.jpg" alt="Producto 1" /></div>
+        <div class="product-slide"><img src="images/kumis2.jpg" alt="Producto 2" /></div>
+        <div class="product-slide"><img src="images/kumis3.jpg" alt="Producto 3" /></div>
+      </div>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Sección de contacto, ayuda y redes sociales -->
+  <section class="contacto-ayuda">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 250px;">
+        <h3>Contáctanos</h3>
+        <p><strong>Dirección:</strong> Cra 7 #21-34, Bogotá</p>
+        <p><strong>Teléfonos:</strong> 301 234 5678 - 302 987 6543</p>
+        <p><strong>Ciudad:</strong> Bogotá D.C.</p>
+        <p><strong>Email:</strong> contacto@lacasadelkumis.com</p>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h3>Ayuda</h3>
+        <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
+        <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
+
+        <h3>Síguenos</h3>
+        <div class="social">
+          <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.png" alt="Facebook" /></a>
+          <a href="https://instagram.com/lacasadelkumis" target="_blank"><img src="images/instagram.png" alt="Instagram" /></a>
+          <a href="https://tiktok.com/@lacasadelkumis" target="_blank"><img src="images/tiktok.png" alt="TikTok" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 La Casa del Kumis. Desarrollado con ❤ por [TuNombre].</p>
+  </footer>
+</body>
+</html>
