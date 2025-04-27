@@ -21,6 +21,7 @@ body {
   color: var(--color-texto);
   background-color: var(--color-secundario);
   line-height: 1.6;
+  padding-top: 70px; /* para compensar el menú fijo */
 }
 
 .container {
@@ -30,8 +31,10 @@ body {
 }
 
 .sticky-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -164,6 +167,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background-color: white;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .product-slide img {
