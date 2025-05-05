@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabaja con nosotros | La Casa del Kumis</title>
+  <link rel="stylesheet" href="estilos/styles.css" />
+  <script defer src="form-handler.js"></script>
+</head>
+<body>
+  <header class="sticky-header">
+    <nav class="header-nav">
+      <a href="index.html" class="logo">La Casa del Kumis</a>
+      <ul class="menu">
+        <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sucursales.html">Sucursales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <a href="index.html"><button>⬅ Volver</button></a>
+    <h2>Trabaja con nosotros</h2>
+    <form id="formulario" enctype="multipart/form-data">
+      <input type="text" name="nombre" placeholder="Nombre y Apellidos" required />
+      <input type="email" name="correo" placeholder="Correo Electrónico" required />
+      <input type="tel" name="telefono" placeholder="Teléfono Móvil" required />
+      <input type="text" name="cargo" placeholder="Relaciona el Cargo" required />
+      <textarea name="mensaje" placeholder="¿Desea agregar un mensaje?"></textarea>
+      <label>Adjuntar archivo:
+        <input type="file" name="archivo" />
+      </label>
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="estado"></p>
+  </main>
+
+  <section class="contacto-ayuda">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 250px;">
+        <h3>Contáctanos</h3>
+        <p><strong>Dirección:</strong> Cra 7 #21-34, Bogotá</p>
+        <p><strong>Teléfonos:</strong> 301 234 5678 - 302 987 6543</p>
+        <p><strong>Ciudad:</strong> Bogotá D.C.</p>
+        <p><strong>Email:</strong> contacto@lacasadelkumis.com</p>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h3>Ayuda</h3>
+        <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
+        <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
+        <h3>Síguenos</h3>
+        <div class="social">
+          <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.png" alt="Facebook" /></a>
+          <a href="https://instagram.com/lacasadelkumis" target="_blank"><img src="images/instagram.png" alt="Instagram" /></a>
+          <a href="https://tiktok.com/@lacasadelkumis" target="_blank"><img src="images/tiktok.png" alt="TikTok" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><p>&copy; 2025 La Casa del Kumis. Todos los derechos reservados.</p></footer>
+</body>
+</html>
