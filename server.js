@@ -1,3 +1,6 @@
+require('dotenv').config();
+// Este código es un ejemplo de cómo crear un servidor Express que maneje un formulario
+// de postulaciones, suba un archivo a Google Drive y almacene la información en Turso.
 const express = require('express');
 const multer = require('multer');
 const { google } = require('googleapis');
@@ -11,8 +14,8 @@ app.use(express.static('public'));
 
 // 👉 Reemplaza estos datos con los tuyos de Turso
 const turso = createClient({
-  url: 'libsql://casa-del-kumis-otpvayne.aws-us-east-1.turso.io',
-  authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJleHAiOjE3Nzc5ODgzNjUsImlhdCI6MTc0NjQ1MjM2NSwiaWQiOiJlNmM1ZDg5NC03Y2I4LTRlZTMtOWNjNS1lMDg5MzY0ZGJiYzciLCJyaWQiOiIzMzNkMzJiNS05ODZmLTQwODAtYmI1NS05ODM2YmMyNDUwMDIifQ.EpajlPkAVEQJWPkXJ1LwWQXr_xaxu7durjrpzjYbS8wpDE5w8GTJ_UW3Ov0PqfcjxFpzNFJNqQj9cCCq4qLSDg',
+  url: process.env.TURSO_URL,
+  authToken: process.env.TURSO_TOKEN,
 });
 
 // Crear tabla si no existe
@@ -33,7 +36,8 @@ const turso = createClient({
 
 // Google Drive setup
 const auth = new google.auth.GoogleAuth({
-  keyFile: 'credentials.json',
+  keyFile: process.env.GOOGLE_CREDENTIALS,
+
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
 const drive = google.drive({ version: 'v3', auth });
@@ -42,7 +46,7 @@ const drive = google.drive({ version: 'v3', auth });
 const upload = multer({ storage: multer.memoryStorage() });
 
 // ID de la carpeta de destino en Drive
-const FOLDER_ID = '1fzHTuIKqY8zBGtHw3ghbgsED4edSmJ-k'; // 👈 reemplaza con tu ID real
+const FOLDER_ID = process.env.GOOGLE_FOLDER_ID; // 👈 reemplaza con tu ID real
 
 app.post('/api/formulario', upload.single('archivo'), async (req, res) => {
   try {
