@@ -72,3 +72,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  document.addEventListener("DOMContentLoaded", () => {
+  const productosData = [
+    { nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
+    { nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
+    { nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", categorias: [] },
+    { nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.", categorias: [] },
+    { nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.", categorias: [] },
+    { nombre: "Kumis con Mora", img: "images/kumis-mora.jpg", desc: "Una explosión de sabor con mora fresca.", categorias: ["mas-vendido"] },
+    { nombre: "Kumis sin Azúcar", img: "images/kumis-sin-azucar.jpg", desc: "Perfecto para quienes cuidan su dieta.", categorias: [] },
+    { nombre: "Kumis con Piña", img: "images/kumis-pina.jpg", desc: "Refrescante y tropical con trocitos reales.", categorias: ["favorito"] },
+    { nombre: "Kumis con Maracuyá", img: "images/kumis-maracuya.jpg", desc: "Ácido y dulce, para paladares intensos.", categorias: [] },
+    { nombre: "Kumis Clásico", img: "images/kumis-clasico.jpg", desc: "Elaborado artesanalmente con leche fresca.", categorias: [] },
+    { nombre: "Kumis con Coco", img: "images/kumis-coco.jpg", desc: "Cremoso y exótico, como el Caribe.", categorias: ["mas-vendido"] },
+    { nombre: "Kumis con Banana", img: "images/kumis-banana.jpg", desc: "Suave, dulce y muy nutritivo.", categorias: [] },
+    { nombre: "Kumis con Guayaba", img: "images/kumis-guayaba.jpg", desc: "El sabor colombiano por excelencia.", categorias: [] },
+    { nombre: "Kumis estilo Griego", img: "images/kumis-griego.jpg", desc: "Más espeso y proteico, ideal para desayunos.", categorias: ["favorito"] },
+    { nombre: "Kumis con Avena", img: "images/kumis-avena.jpg", desc: "Tradicional y lleno de energía natural.", categorias: [] }
+  ];
+
+  const container = document.getElementById("productos-container");
+  const paginacion = document.getElementById("paginacion");
+  const filtroBtns = document.querySelectorAll(".filtro-btn");
+  const ordenarSelect = document.getElementById("ordenar");
+
+  let productosFiltrados = [...productosData];
+  let currentPage = 1;
+  const itemsPerPage = 6;
+
+  function renderProductos() {
+    container.innerHTML = "";
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginaProductos = productosFiltrados.slice(start, end);
+
+    paginaProductos.forEach(prod => {
+      const box = document.createElement("div");
+      box.className = `producto-box ${prod.categorias.join(" ")}`;
+      if (prod.categorias.includes("favorito")) {
+        box.innerHTML += `<span class="etiqueta favorito">★ Favorito</span>`;
+      }
+      if (prod.categorias.includes("mas-vendido")) {
+        box.innerHTML += `<span class="etiqueta mas-vendido">🔥 Más vendido</span>`;
+      }
+      box.innerHTML += `
+        <img src="${prod.img}" alt="${prod.nombre}" />
+        <div class="info-producto">
+          <h3>${prod.nombre}</h3>
+          <p>${prod.desc}</p>
+        </div>
+      `;
+      container.appendChild(box);
+    });
+    renderPaginacion();
+  }
+
+  function renderPaginacion() {
+    const totalPages = Math.ceil(productosFiltrados.length / itemsPerPage);
+    paginacion.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.className = i === currentPage ? "activo" : "";
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderProductos();
+      });
+      paginacion.appendChild(btn);
+    }
+  }
+
+  filtroBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filtroBtns.forEach(b => b.classList.remove("activo"));
+      btn.classList.add("activo");
+      const filtro = btn.dataset.filtro;
+      productosFiltrados = filtro === "todos"
+        ? [...productosData]
+        : productosData.filter(p => p.categorias.includes(filtro));
+      currentPage = 1;
+      renderProductos();
+    });
+  });
+
+  ordenarSelect.addEventListener("change", () => {
+    const val = ordenarSelect.value;
+    if (val === "nombre-asc") {
+      productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    } else if (val === "nombre-desc") {
+      productosFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+    }
+    renderProductos();
+  });
+
+  renderProductos();
+});

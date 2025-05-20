@@ -20,26 +20,34 @@
   </header>
 
   <main class="container">
-    <a href="index.html"><button>⬅ Volver</button></a>
-    <h2>Nuestros Productos</h2>
-    <div class="productos">
-      <div class="producto">
-        <img src="images/kumis-tradicional.jpg" alt="Kumis Tradicional" />
-        <h3>Kumis Tradicional</h3>
-        <p>Fresco, cremoso y con el sabor auténtico que nos caracteriza.</p>
-      </div>
-      <div class="producto">
-        <img src="images/kumis-fresa.jpg" alt="Kumis con Fresa" />
-        <h3>Kumis con Fresa</h3>
-        <p>Una mezcla deliciosa con trozos naturales de fresa.</p>
-      </div>
-      <div class="producto">
-        <img src="images/kumis-durazno.jpg" alt="Kumis con Durazno" />
-        <h3>Kumis con Durazno</h3>
-        <p>Ideal para quienes buscan algo más dulce pero natural.</p>
-      </div>
+  <a href="index.html"><button>⬅ Volver</button></a>
+
+  <section class="productos-section">
+    <h2 class="titulo-productos">Explora Nuestros Sabores</h2>
+
+    <!-- Controles -->
+    <div class="filtros">
+      <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+      <button class="filtro-btn" data-filtro="favorito">Favoritos</button>
+      <button class="filtro-btn" data-filtro="mas-vendido">Más vendidos</button>
+      <select id="ordenar" class="ordenar-select">
+        <option value="">Ordenar por...</option>
+        <option value="nombre-asc">Nombre A-Z</option>
+        <option value="nombre-desc">Nombre Z-A</option>
+      </select>
     </div>
-  </main>
+
+    <!-- Productos -->
+    <div id="productos-container" class="productos-grid"></div>
+
+    <!-- Paginación -->
+    <div class="paginacion" id="paginacion"></div>
+  </section>
+</main>
+
+
+
+
 
   <!-- Sección final igual -->
   <section class="contacto-ayuda">
