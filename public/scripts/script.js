@@ -71,8 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.classList.toggle('active');
     });
   });
-  
-  document.addEventListener("DOMContentLoaded", () => {
+  // Productos dinámicos
   const productosData = [
     { nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
     { nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
@@ -95,6 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const paginacion = document.getElementById("paginacion");
   const filtroBtns = document.querySelectorAll(".filtro-btn");
   const ordenarSelect = document.getElementById("ordenar");
+
+  // NUEVO: Buscador
+  const searchInput = document.createElement("input");
+  searchInput.type = "text";
+  searchInput.placeholder = "Buscar producto...";
+  searchInput.className = "buscador";
+  document.querySelector(".filtros").appendChild(searchInput);
+
+  // NUEVO: Volver arriba
+  const volverArriba = document.createElement("button");
+  volverArriba.textContent = "↑ Volver arriba";
+  volverArriba.className = "volver-arriba";
+  document.body.appendChild(volverArriba);
+
+  volverArriba.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
   let productosFiltrados = [...productosData];
   let currentPage = 1;
@@ -150,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
       productosFiltrados = filtro === "todos"
         ? [...productosData]
         : productosData.filter(p => p.categorias.includes(filtro));
+      searchInput.value = "";
       currentPage = 1;
       renderProductos();
     });
@@ -165,5 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProductos();
   });
 
+  // NUEVO: Buscador en tiempo real
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    productosFiltrados = productosData.filter(p =>
+      p.nombre.toLowerCase().includes(query) ||
+      p.desc.toLowerCase().includes(query)
+    );
+    filtroBtns.forEach(b => b.classList.remove("activo"));
+    ordenarSelect.value = "";
+    currentPage = 1;
+    renderProductos();
+  });
+
   renderProductos();
-});
