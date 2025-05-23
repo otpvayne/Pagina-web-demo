@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         box.innerHTML += `<span class="etiqueta mas-vendido">🔥 Más vendido</span>`;
       }
      box.innerHTML += `
-  <a <a href="producto.html?id=${encodeURIComponent(prod.nombre)}">
+  <a href="producto.html?id=${encodeURIComponent(prod.nombre)}" target="_blank">
     <img src="${prod.img}" alt="${prod.nombre}" />
     <div class="info-producto">
       <h3>${prod.nombre}</h3>
