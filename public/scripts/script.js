@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   // Productos dinámicos
   const productosData = [
-    { nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
-    { nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
+    { id: "fresa",nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
+    { id: "Tradicional",nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
     { nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", categorias: [] },
     { nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.", categorias: [] },
     { nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.", categorias: [] },
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         box.innerHTML += `<span class="etiqueta mas-vendido">🔥 Más vendido</span>`;
       }
      box.innerHTML += `
-  <a href="producto.html?id=${encodeURIComponent(prod.nombre)}" target="_blank">
+  <a href="producto.html?id=${encodeURIComponent(prod.id)}" target="">
     <img src="${prod.img}" alt="${prod.nombre}" />
     <div class="info-producto">
       <h3>${prod.nombre}</h3>

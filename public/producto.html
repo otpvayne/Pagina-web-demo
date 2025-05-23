@@ -100,15 +100,15 @@
   <!-- SCRIPT DE DETALLE -->
   <script>
     const productosData = [
-      { nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", rappi: "https://rappi.com/kumis-fresa" },
-      { nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", rappi: "https://rappi.com/kumis-tradicional" },
+      { id: "fresa", nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", rappi: "https://rappi.com/kumis-fresa" },
+      { id: "Tradicional", nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", rappi: "https://rappi.com/kumis-tradicional" },
       { nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", rappi: "#" }
     ];
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
     const contenedor = document.getElementById("detalle-producto");
-    const producto = productosData.find(p => p.nombre === id);
+    const producto = productosData.find(p => p.id === id);
 
     if (producto) {
       contenedor.innerHTML = `
