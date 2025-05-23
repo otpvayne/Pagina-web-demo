@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle del Producto | La Casa del Kumis</title>
+  <link rel="stylesheet" href="estilos/styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #fff7e6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    main img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    main h2 {
+      font-size: 2rem;
+      color: #f6b73c;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+      color: #333;
+      max-width: 600px;
+    }
+
+    main a button {
+      padding: 0.8rem 2rem;
+      background-color: #f6b73c;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    main a button:hover {
+      background-color: #e59f00;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+
+      main h2 {
+        font-size: 1.5rem;
+      }
+
+      main p {
+        font-size: 1rem;
+      }
+
+      main a button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- MENÚ FIJO SUPERIOR -->
+  <header class="sticky-header">
+    <nav class="header-nav">
+      <a href="index.html" class="logo">La Casa del Kumis</a>
+      <ul class="menu">
+        <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sucursales.html">Sucursales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO DINÁMICO DEL PRODUCTO -->
+  <main>
+    <div id="detalle-producto"></div>
+  </main>
+
+  <!-- SCRIPT DE DETALLE -->
+  <script>
+    const productosData = [
+      { nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", rappi: "https://rappi.com/kumis-fresa" },
+      { nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", rappi: "https://rappi.com/kumis-tradicional" },
+      { nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", rappi: "#" }
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const contenedor = document.getElementById("detalle-producto");
+    const producto = productosData.find(p => p.nombre === id);
+
+    if (producto) {
+      contenedor.innerHTML = `
+        <h2>${producto.nombre}</h2>
+        <img src="${producto.img}" alt="${producto.nombre}" />
+        <p>${producto.desc}</p>
+        <a href="${producto.rappi}" target="_blank">
+          <button>🛒 Comprar ahora en Rappi</button>
+        </a>
+      `;
+    } else {
+      contenedor.innerHTML = "<p>Producto no encontrado.</p>";
+    }
+  </script>
+
+  <!-- PIE DE PÁGINA -->
+  <section class="contacto-ayuda">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+      <div style="flex: 1; min-width: 250px;">
+        <h3>Contáctanos</h3>
+        <p><strong>Dirección:</strong> Cra 7 #21-34, Bogotá</p>
+        <p><strong>Teléfonos:</strong> 301 234 5678 - 302 987 6543</p>
+        <p><strong>Ciudad:</strong> Bogotá D.C.</p>
+        <p><strong>Email:</strong> contacto@lacasadelkumis.com</p>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h3>Ayuda</h3>
+        <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
+        <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
+        <h3>Síguenos</h3>
+        <div class="social">
+          <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.svg" alt="Facebook" /></a>
+          <a href="https://instagram.com/lacasadelkumis" target="_blank"><img src="images/instagram.svg" alt="Instagram" /></a>
+          <a href="https://tiktok.com/@lacasadelkumis" target="_blank"><img src="images/tiktok.svg" alt="TikTok" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 La Casa del Kumis. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

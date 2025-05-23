@@ -131,13 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (prod.categorias.includes("mas-vendido")) {
         box.innerHTML += `<span class="etiqueta mas-vendido">🔥 Más vendido</span>`;
       }
-      box.innerHTML += `
-        <img src="${prod.img}" alt="${prod.nombre}" />
-        <div class="info-producto">
-          <h3>${prod.nombre}</h3>
-          <p>${prod.desc}</p>
-        </div>
-      `;
+     box.innerHTML += `
+  <a <a href="producto.html?id=${encodeURIComponent(prod.nombre)}">
+    <img src="${prod.img}" alt="${prod.nombre}" />
+    <div class="info-producto">
+      <h3>${prod.nombre}</h3>
+      <p>${prod.desc}</p>
+    </div>
+  </a>
+`;
+
       container.appendChild(box);
     });
     renderPaginacion();
