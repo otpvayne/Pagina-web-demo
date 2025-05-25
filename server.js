@@ -36,10 +36,10 @@ const turso = createClient({
 
 // Google Drive setup
 const auth = new google.auth.GoogleAuth({
-  keyFile: process.env.GOOGLE_CREDENTIALS,
-
+  credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON), // ✅ usa JSON directo desde variable de entorno
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
+
 const drive = google.drive({ version: 'v3', auth });
 
 // Configurar multer (subida a memoria)
