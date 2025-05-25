@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trabaja con nosotros | La Casa del Kumis</title>
   <link rel="stylesheet" href="estilos/styles.css" />
-
 </head>
 <body>
   <header class="sticky-header">
@@ -23,36 +22,48 @@
     <a href="index.html"><button>⬅ Volver</button></a>
     <h2>Trabaja con nosotros</h2>
     <h1>Formulario de Postulación</h1>
-  <form id="formulario" enctype="multipart/form-data">
-    <input name="nombre" placeholder="Nombre" required><br>
-    <input name="email" placeholder="Correo" type="email" required><br>
-    <input name="telefono" placeholder="Teléfono" required><br>
-    <input name="cargo" placeholder="Cargo" required><br>
-    <textarea name="mensaje" placeholder="Mensaje"></textarea><br>
-    <input type="file" name="archivo" required><br>
-    <button type="submit">Enviar</button>
-  </form>
-  <p id="estado"></p>
-  <script>
-    document.getElementById('formulario').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const estado = document.getElementById('estado');
-      estado.textContent = 'Enviando...';
 
-      const formData = new FormData(e.target);
-      try {
-        const res = await fetch('http://localhost:3000/api/formulario', {
-          method: 'POST',
-          body: formData
-        });
-        const text = await res.text();
-        estado.textContent = res.ok ? text : 'Error: ' + text;
-      } catch (err) {
-        console.error(err);
-        estado.textContent = 'Error al enviar';
-      }
-    });
-  </script>
+    <form id="formulario" enctype="multipart/form-data">
+      <input name="nombre" placeholder="Nombre" required><br>
+      <input name="email" placeholder="Correo" type="email" required><br>
+      <input name="telefono" placeholder="Teléfono" required><br>
+      <input name="cargo" placeholder="Cargo" required><br>
+      <textarea name="mensaje" placeholder="Mensaje"></textarea><br>
+      <input type="file" name="archivo" required><br>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <p id="estado"></p>
+
+    <script>
+      document.getElementById('formulario').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const estado = document.getElementById('estado');
+        estado.textContent = 'Enviando...';
+
+        const formData = new FormData(e.target);
+        try {
+          const res = await fetch('/api/formulario', {
+            method: 'POST',
+            body: formData
+          });
+
+          const text = await res.text();
+          if (res.ok) {
+            alert('✅ Formulario enviado con éxito');
+            estado.textContent = '';
+            e.target.reset();
+          } else {
+            alert('❌ Error al enviar: ' + text);
+            estado.textContent = 'Error: ' + text;
+          }
+        } catch (err) {
+          console.error(err);
+          alert('❌ Error de conexión con el servidor.');
+          estado.textContent = 'Error al enviar';
+        }
+      });
+    </script>
   </main>
 
   <section class="contacto-ayuda">
