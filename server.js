@@ -59,7 +59,7 @@ app.post('/api/formulario', upload.single('archivo'), async (req, res) => {
     // Subir a Google Drive dentro de la carpeta especificada
     const fileMetadata = {
       name: archivo.originalname,
-      parents: [FOLDER_ID],
+      
     };
     const media = {
       mimeType: archivo.mimetype,
@@ -73,6 +73,12 @@ app.post('/api/formulario', upload.single('archivo'), async (req, res) => {
     });
 
     const fileId = result.data.id;
+    // 👉 Mover el archivo a la carpeta deseada
+await drive.files.update({
+  fileId,
+  addParents: FOLDER_ID,
+});
+
 
     // Hacer el archivo público
     await drive.permissions.create({
