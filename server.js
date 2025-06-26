@@ -34,9 +34,9 @@ const turso = createClient({
   `);
 })();
 
-// Google Drive setup
-const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON), // ✅ usa JSON directo desde variable de entorno
+const auth = new google.auth.JWT({
+  email: process.env.GOOGLE_CLIENT_EMAIL,
+  key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'), // ⚠️ Esto convierte los \n en saltos reales
   scopes: ['https://www.googleapis.com/auth/drive.file'],
 });
 
