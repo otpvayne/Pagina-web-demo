@@ -7,7 +7,6 @@
   <title>La Casa del Kumis</title>
   <link rel="stylesheet" href="estilos/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-  <script defer src="scripts/script.js"></script>
 </head>
 
 <body>
@@ -21,7 +20,7 @@
       </ul>
     </nav>
   </header>
-
+  
   <section id="inicio">
     <!-- Carrusel principal -->
     <div class="carousel">
@@ -36,21 +35,17 @@
         <span class="dot" data-index="2"></span>
       </div>
     </div>
-
+    
     <!-- Carrusel de productos pequeño -->
-    <div class="product-carousel">
-      <button class="prev">&#10094;</button>
-      <div class="product-track">
-        <div class="product-slide"><img src="images/kumis1.jpg" alt="Producto 1" /></div>
-        <div class="product-slide"><img src="images/kumis2.jpg" alt="Producto 2" /></div>
-        <div class="product-slide"><img src="images/kumis3.jpg" alt="Producto 3" /></div>
-      </div>
-      <button class="next">&#10095;</button>
-    </div>
-  </section>
+    <!-- Carrusel de productos más vendidos (horizontal, loop) -->
+<section class="product-carousel-wrapper">
+  <div class="product-carousel-loop" id="mas-vendidos-carousel"></div>
+</section>
 
-  <!-- Sección de contacto, ayuda y redes sociales -->
-  <section class="contacto-ayuda">
+</section>
+
+<!-- Sección de contacto, ayuda y redes sociales -->
+<section class="contacto-ayuda">
     <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
       <div style="flex: 1; min-width: 250px;">
         <h3>Contáctanos</h3>
@@ -63,7 +58,7 @@
         <h3>Ayuda</h3>
         <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
         <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
-
+        
         <h3>Síguenos</h3>
         <div class="social">
           <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.svg" alt="Facebook" /></a>
@@ -73,9 +68,10 @@
       </div>
     </div>
   </section>
-
+  
   <footer>
     <p>&copy; 2025 La Casa del Kumis. Desarrollado con ❤ por [TuNombre].</p>
   </footer>
 </body>
+<script defer src="scripts/script.js"></script>
 </html>

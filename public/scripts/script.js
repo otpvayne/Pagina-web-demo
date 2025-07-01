@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const productosLoop = document.getElementById("mas-vendidos-carousel");
+if (productosLoop) {
+  const masVendidos = productosData.filter(p => p.categorias.includes("mas-vendido"));
+  const duplicados = [...masVendidos, ...masVendidos, ...masVendidos]; // 3 veces para evitar espacios
+
+  productosLoop.innerHTML = duplicados.map(p => `
+    <div class="product-slide">
+      <a href="producto.html?id=${encodeURIComponent(p.id)}">
+        <img src="${p.img}" alt="${p.nombre}" title="${p.nombre}" />
+      </a>
+    </div>
+  `).join('');
+}
+
+
     const logo = document.querySelector('.logo');
     logo?.addEventListener('mouseover', () => {
       logo.style.textShadow = '0 0 10px rgba(255,255,255,0.8)';
