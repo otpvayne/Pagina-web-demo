@@ -128,8 +128,19 @@ app.get('/api/descargar-postulaciones', async (req, res) => {
       return res.status(404).send('No hay postulaciones registradas.');
     }
 
-    const parser = new Parser();
-    const csv = parser.parse(registros);
+    // Mapear a un formato más legible
+    const dataLimpia = registros.map(r => ({
+      Nombre: r.nombre,
+      Correo: r.email,
+      Teléfono: r.telefono,
+      Cargo: r.cargo,
+      Mensaje: r.mensaje,
+      'Archivo (Google Drive)': r.archivo_url,
+      'Fecha de Envío': new Date(r.fecha_envio).toLocaleString('es-CO'),
+    }));
+
+    const parser = new Parser({ fields: Object.keys(dataLimpia[0]) });
+    const csv = parser.parse(dataLimpia);
 
     res.header('Content-Type', 'text/csv');
     res.attachment('postulaciones.csv');
