@@ -116,3 +116,26 @@ app.listen(3000, () => console.log('✅ Servidor escuchando en http://localhost:
 // Asegúrate de tener las dependencias instaladas:
 // npm install express multer googleapis cors @libsql/client
 // Recuerda reemplazar 'TU_ID_DE_CARPETA' con el ID real de tu carpeta en Google Drive. 
+
+const { Parser } = require('json2csv');
+
+app.get('/api/descargar-postulaciones', async (req, res) => {
+  try {
+    const result = await turso.execute('SELECT * FROM postulaciones ORDER BY fecha_envio DESC');
+    const registros = result.rows;
+
+    if (!registros.length) {
+      return res.status(404).send('No hay postulaciones registradas.');
+    }
+
+    const parser = new Parser();
+    const csv = parser.parse(registros);
+
+    res.header('Content-Type', 'text/csv');
+    res.attachment('postulaciones.csv');
+    res.send(csv);
+  } catch (error) {
+    console.error('❌ Error generando CSV:', error);
+    res.status(500).send('Error al generar el archivo.');
+  }
+});
