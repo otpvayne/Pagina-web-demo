@@ -128,7 +128,6 @@ app.get('/api/descargar-postulaciones', async (req, res) => {
       return res.status(404).send('No hay postulaciones registradas.');
     }
 
-    // Mapear a un formato más legible
     const dataLimpia = registros.map(r => ({
       Nombre: r.nombre,
       Correo: r.email,
@@ -142,9 +141,11 @@ app.get('/api/descargar-postulaciones', async (req, res) => {
     const parser = new Parser({ fields: Object.keys(dataLimpia[0]) });
     const csv = parser.parse(dataLimpia);
 
-    res.header('Content-Type', 'text/csv');
+    const bom = '\uFEFF'; // 💡 Marca de orden de bytes para que Excel reconozca UTF-8
+
+    res.header('Content-Type', 'text/csv; charset=utf-8');
     res.attachment('postulaciones.csv');
-    res.send(csv);
+    res.send(bom + csv);
   } catch (error) {
     console.error('❌ Error generando CSV:', error);
     res.status(500).send('Error al generar el archivo.');
