@@ -118,6 +118,7 @@ app.listen(3000, () => console.log('✅ Servidor escuchando en http://localhost:
 // Recuerda reemplazar 'TU_ID_DE_CARPETA' con el ID real de tu carpeta en Google Drive. 
 
 const { Parser } = require('json2csv');
+const fs = require('fs');
 
 app.get('/api/descargar-postulaciones', async (req, res) => {
   try {
@@ -135,17 +136,19 @@ app.get('/api/descargar-postulaciones', async (req, res) => {
       Cargo: r.cargo,
       Mensaje: r.mensaje,
       'Archivo (Google Drive)': r.archivo_url,
-      'Fecha de Envío': new Date(r.fecha_envio).toLocaleString('es-CO'),
+      'Fecha de Envío': new Date(r.fecha_envio).toLocaleString('es-CO', {
+        timeZone: 'America/Bogota',
+        hour12: true
+      }),
     }));
 
     const parser = new Parser({ fields: Object.keys(dataLimpia[0]) });
     const csv = parser.parse(dataLimpia);
-
-    const bom = '\uFEFF'; // 💡 Marca de orden de bytes para que Excel reconozca UTF-8
+    const bom = '\uFEFF'; // Byte Order Mark UTF-8 para Excel
 
     res.header('Content-Type', 'text/csv; charset=utf-8');
     res.attachment('postulaciones.csv');
-    res.send(bom + csv);
+    res.send(bom + csv); // 👈 esto es lo que arregla la codificación
   } catch (error) {
     console.error('❌ Error generando CSV:', error);
     res.status(500).send('Error al generar el archivo.');
