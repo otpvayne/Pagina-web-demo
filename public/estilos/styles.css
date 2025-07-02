@@ -487,40 +487,90 @@ footer {
   background-color: #57a85a;
   transform: scale(1.05);
 }
-.product-carousel-loop-wrapper {
-  overflow: hidden;
-  width: 100vw;
+.product-carousel-wrapper {
   position: relative;
-  background: white;
-}
-
-.product-carousel-loop {
-  display: flex;
-  gap: 0;
-  animation: scrollLoop 30s linear infinite;
-}
-
-.product-carousel-loop .product-slide {
-  flex: 0 0 auto;
-  width: 200px; /* O ajusta según tu preferencia */
-  height: 200px;
-  margin-right: 0;
-  border-radius: 1rem;
   overflow: hidden;
+  padding: 2rem 1rem;
+  background-color: white;
 }
 
-.product-carousel-loop .product-slide img {
+.product-carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  gap: 1rem;
+}
+
+.product-slide {
+  flex: 0 0 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background-color: white;
+  text-align: center;
+  transition: transform 0.3s;
+  height: 250px;
+
+}
+
+.product-slide:hover {
+  transform: scale(1.03);
+}
+
+.product-slide img {
   width: 100%;
-  height: 100%;
+  height: 200px;
   object-fit: cover;
 }
 
-/* Animación de desplazamiento infinito */
-@keyframes scrollLoop {
-  0% {
-    transform: translateX(0);
+.product-slide-title {
+  background: #c8102e;
+  color: white;
+  font-weight: bold;
+  padding: 0.7rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #c8102e;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background-color: #a60d26;
+}
+
+@media (max-width: 768px) {
+  .product-slide {
+    flex: 0 0 160px;
   }
-  100% {
-    transform: translateX(-50%);
+
+  .product-slide-title {
+    font-size: 0.85rem;
   }
 }
+.product-slide {
+  transition: transform 0.3s ease;
+}
+
+.product-slide:hover {
+  transform: scale(1.05);
+}
+

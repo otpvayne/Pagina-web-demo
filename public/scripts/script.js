@@ -1,17 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
   const productosLoop = document.getElementById("mas-vendidos-carousel");
-if (productosLoop) {
-  const masVendidos = productosData.filter(p => p.categorias.includes("mas-vendido"));
-  const duplicados = [...masVendidos, ...masVendidos, ...masVendidos]; // 3 veces para evitar espacios
-
-  productosLoop.innerHTML = duplicados.map(p => `
-    <div class="product-slide">
+  if (productosLoop) {
+    const masVendidos = productosData.filter(p => p.categorias.includes("mas-vendido"));
+    productosLoop.innerHTML = masVendidos.map(p => `
+      <div class="product-slide">
       <a href="producto.html?id=${encodeURIComponent(p.id)}">
-        <img src="${p.img}" alt="${p.nombre}" title="${p.nombre}" />
+      <div class="product-slide-title">${p.nombre}</div>
+      <img src="${p.img}" alt="${p.nombre}"  />
       </a>
-    </div>
-  `).join('');
+      </div>
+      `).join('');
+    }
+    const carouselTrack = document.querySelector('.product-carousel-track');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    
+// Mueve el primer elemento al final
+nextBtn.addEventListener("click", () => {
+  const first = carrusel.firstElementChild;
+  carrusel.appendChild(first);
+});
+
+// Mueve el último elemento al inicio
+prevBtn.addEventListener("click", () => {
+  const last = carrusel.lastElementChild;
+  carrusel.insertBefore(last, carrusel.firstElementChild);
+});
+let position = 0;
+
+function updateCarouselPosition() {
+  const slideWidth = carouselTrack.querySelector('.product-slide').offsetWidth + 16; // incluye gap
+  carouselTrack.style.transform = `translateX(-${position * slideWidth}px)`;
 }
+
+// Carrusel en bucle: mover elementos visualmente
+nextBtn.addEventListener("click", () => {
+  const first = carouselTrack.firstElementChild;
+  carouselTrack.appendChild(first);
+  carouselTrack.scrollLeft = 0; // reset scroll
+});
+
+prevBtn.addEventListener("click", () => {
+  const last = carouselTrack.lastElementChild;
+  carouselTrack.insertBefore(last, carouselTrack.firstElementChild);
+  carouselTrack.scrollLeft = 0; // reset scroll
+});
+setInterval(() => {
+  const first = carouselTrack.firstElementChild;
+  carouselTrack.appendChild(first);
+  carouselTrack.scrollLeft = 0;
+}, 5000);
+
 
 
     const logo = document.querySelector('.logo');
@@ -55,8 +94,6 @@ if (productosLoop) {
   
     const track = document.querySelector('.product-track');
     const slidesSmall = document.querySelectorAll('.product-slide');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
   
     let index = 0;
     const maxIndex = slidesSmall.length;
@@ -90,17 +127,17 @@ if (productosLoop) {
   const productosData = [
     { id: "fresa",nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
     { id: "Tradicional",nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
-    { id: "Durazno" , nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", categorias: [] },
-    { id: "Mango" , nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.", categorias: [] },
-    { id: "Light" , nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.", categorias: [] },
+    { id: "Durazno" , nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", categorias: ["mas-vendido"] },
+    { id: "Mango" , nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.", categorias: ["mas-vendido"] },
+    { id: "Light" , nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.", categorias: ["mas-vendido"] },
     { id: "Mora" , nombre: "Kumis con Mora", img: "images/kumis-mora.jpg", desc: "Una explosión de sabor con mora fresca.", categorias: ["mas-vendido"] },
     { id: "Azucar" , nombre: "Kumis sin Azúcar", img: "images/kumis-sin-azucar.jpg", desc: "Perfecto para quienes cuidan su dieta.", categorias: [] },
     { id: "Pina" , nombre: "Kumis con Piña", img: "images/kumis-pina.jpg", desc: "Refrescante y tropical con trocitos reales.", categorias: ["favorito"] },
     { id: "Maracuya" , nombre: "Kumis con Maracuyá", img: "images/kumis-maracuya.jpg", desc: "Ácido y dulce, para paladares intensos.", categorias: [] },
     { id: "Clasico" , nombre: "Kumis Clásico", img: "images/kumis-clasico.jpg", desc: "Elaborado artesanalmente con leche fresca.", categorias: [] },
     { id: "Coco" , nombre: "Kumis con Coco", img: "images/kumis-coco.jpg", desc: "Cremoso y exótico, como el Caribe.", categorias: ["mas-vendido"] },
-    { id: "Banana" , nombre: "Kumis con Banana", img: "images/kumis-banana.jpg", desc: "Suave, dulce y muy nutritivo.", categorias: [] },
-    { id: "Guayaba" , nombre: "Kumis con Guayaba", img: "images/kumis-guayaba.jpg", desc: "El sabor colombiano por excelencia.", categorias: [] },
+    { id: "Banana" , nombre: "Kumis con Banana", img: "images/kumis-banana.jpg", desc: "Suave, dulce y muy nutritivo.", categorias: ["mas-vendido"] },
+    { id: "Guayaba" , nombre: "Kumis con Guayaba", img: "images/kumis-guayaba.jpg", desc: "El sabor colombiano por excelencia.", categorias: ["mas-vendido"] },
     { id: "Griego" , nombre: "Kumis estilo Griego", img: "images/kumis-griego.jpg", desc: "Más espeso y proteico, ideal para desayunos.", categorias: ["favorito"] },
     { id: "Avena" , nombre: "Kumis con Avena", img: "images/kumis-avena.jpg", desc: "Tradicional y lleno de energía natural.", categorias: [] }
   ];
