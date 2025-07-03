@@ -77,6 +77,110 @@
         width: 100%;
       }
     }
+  .product-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.product-img {
+  max-width: 320px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.product-img img {
+  max-height: 300px;
+  width: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.product-info {
+  flex: 1;
+  max-width: 500px;
+}
+
+.reviews {
+  margin-top: 1.5rem;
+  background-color: #fff3e6;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.review {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-carousel-wrapper {
+  padding: 2rem 1rem 1rem 1rem;
+  overflow: hidden;
+  background-color: transparent; /* QUITA el fondo blanco */
+}
+
+.product-carousel-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+
+.product-slide {
+  flex: 0 0 220px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.product-slide img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.product-slide-title {
+  padding: 0.6rem;
+  font-weight: bold;
+  background: #c8102e;
+  color: white;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .product-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-info {
+    max-width: 100%;
+  }
+
+  .reviews {
+    text-align: left;
+  }
+}
+.divider {
+  margin: 3rem auto 2rem;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(to right, #f6b73c, #c8102e);
+  border: none;
+  border-radius: 2px;
+}
+
+
   </style>
 </head>
 <body>
@@ -94,48 +198,123 @@
 
   <!-- CONTENIDO DINÁMICO DEL PRODUCTO -->
   <main>
-    <div id="detalle-producto"></div>
-  </main>
+  <div id="detalle-producto"></div>
+
+  <div class="product-carousel-wrapper">
+    
+    <div class="product-carousel-track" id="carousel-sugerencias"></div>
+  </div>
+</main>
 
   <!-- SCRIPT DE DETALLE -->
-  <script>
-    const productosData = [
-     { id: "fresa",nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.",  rappi: "#"},
-    { id: "Tradicional",nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.",  rappi: "#"},
-    { id: "Durazno" , nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.",  rappi: "#"},
-    { id: "Mango" , nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.",  rappi: "#"},
-    { id: "Light" , nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.",  rappi: "#"},
-    { id: "Mora" , nombre: "Kumis con Mora", img: "images/kumis-mora.jpg", desc: "Una explosión de sabor con mora fresca.",  rappi: "#"},
-    { id: "Azucar" , nombre: "Kumis sin Azúcar", img: "images/kumis-sin-azucar.jpg", desc: "Perfecto para quienes cuidan su dieta.",  rappi: "#"},
-    { id: "Pina" , nombre: "Kumis con Piña", img: "images/kumis-pina.jpg", desc: "Refrescante y tropical con trocitos reales.",  rappi: "#"},
-    { id: "Maracuya" , nombre: "Kumis con Maracuyá", img: "images/kumis-maracuya.jpg", desc: "Ácido y dulce, para paladares intensos.",  rappi: "#"},
-    { id: "Clasico" , nombre: "Kumis Clásico", img: "images/kumis-clasico.jpg", desc: "Elaborado artesanalmente con leche fresca.",  rappi: "#"},
-    { id: "Coco" , nombre: "Kumis con Coco", img: "images/kumis-coco.jpg", desc: "Cremoso y exótico, como el Caribe.",  rappi: "#"},
-    { id: "Banana" , nombre: "Kumis con Banana", img: "images/kumis-banana.jpg", desc: "Suave, dulce y muy nutritivo.",  rappi: "#"},
-    { id: "Guayaba" , nombre: "Kumis con Guayaba", img: "images/kumis-guayaba.jpg", desc: "El sabor colombiano por excelencia.",  rappi: "#"},
-    { id: "Griego" , nombre: "Kumis estilo Griego", img: "images/kumis-griego.jpg", desc: "Más espeso y proteico, ideal para desayunos.",  rappi: "#",},
-    { id: "Avena" , nombre: "Kumis con Avena", img: "images/kumis-avena.jpg", desc: "Tradicional y lleno de energía natural.",  rappi: "#"},
-    { id: "Durazno",nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", rappi: "#" }
-    ];
-
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const contenedor = document.getElementById("detalle-producto");
-    const producto = productosData.find(p => p.id === id);
-
-    if (producto) {
-      contenedor.innerHTML = `
-        <h2>${producto.nombre}</h2>
-        <img src="${producto.img}" alt="${producto.nombre}" />
-        <p>${producto.desc}</p>
-        <a href="${producto.rappi}" target="_blank">
-          <button>🛒 Comprar ahora en Rappi</button>
-        </a>
-      `;
-    } else {
-      contenedor.innerHTML = "<p>Producto no encontrado.</p>";
+ <script>
+  const productosData = [
+    {
+      id: "fresa",
+      nombre: "Kumis con Fresa",
+      img: "images/kumis-fresa.jpg",
+      desc: "Con trozos naturales de fresa.",
+      rappi: "#",
+      reseñas: [
+        { autor: "Laura G.", estrellas: 4, texto: "Muy dulce, me encanta." },
+        { autor: "Juan M.", estrellas: 5, texto: "Perfecto para las onces." }
+      ]
+    },
+    {
+      id: "Guayaba",
+      nombre: "Kumis con Guayaba",
+      img: "images/kumis-guayaba.jpg",
+      desc: "El sabor colombiano por excelencia.",
+      rappi: "#",
+      reseñas: [
+        { autor: "Camila P.", estrellas: 4, texto: "Lo compro cada semana." },
+        { autor: "Andrés R.", estrellas: 5, texto: "Me encanta la textura." }
+      ]
+    },
+    {
+      id: "Durazno",
+      nombre: "Kumis con Durazno",
+      img: "images/kumis-durazno.jpg",
+      desc: "Con un toque frutal maduro.",
+      rappi: "#",
+      reseñas: [
+        { autor: "Diana S.", estrellas: 5, texto: "El mejor sabor que he probado." }
+      ]
+    },
+    {
+      id: "Mora",
+      nombre: "Kumis con Mora",
+      img: "images/kumis-mora.jpg",
+      desc: "Una explosión de sabor con mora fresca.",
+      rappi: "#",
+      reseñas: [
+        { autor: "Sergio C.", estrellas: 4, texto: "Muy natural y rico." }
+      ]
+    },
+    {
+      id: "Clasico",
+      nombre: "Kumis Clásico",
+      img: "images/kumis-clasico.jpg",
+      desc: "Auténtico y artesanal.",
+      rappi: "#",
+      reseñas: [
+        { autor: "Natalia R.", estrellas: 5, texto: "Sabe a tradición. Delicioso." }
+      ]
     }
-  </script>
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const contenedor = document.getElementById("detalle-producto");
+  const producto = productosData.find(p => p.id === id);
+
+  if (producto) {
+    const reseñasHTML = producto.reseñas.map(r =>
+      `<div class="review">
+        <p><strong>${r.autor}</strong> ${'⭐'.repeat(r.estrellas)}${'☆'.repeat(5 - r.estrellas)}</p>
+        <p>${r.texto}</p>
+      </div>`
+    ).join("");
+
+    contenedor.innerHTML = `
+      <div class="product-wrapper">
+        <div class="product-img">
+          <img src="${producto.img}" alt="${producto.nombre}" />
+        </div>
+        <div class="product-info">
+          <h2>${producto.nombre}</h2>
+          <p>${producto.desc}</p>
+          <a href="${producto.rappi}" target="_blank">
+            <button>🛒 Comprar ahora en Rappi</button>
+          </a>
+          <div class="reviews">
+            <h3>Reseñas del producto</h3>
+            ${reseñasHTML}
+          </div>
+        </div>
+      </div>
+      <hr class="divider" />
+<h2 style="color:#c8102e; margin-bottom:1rem;">También te puede interesar</h2>
+<div class="product-carousel-wrapper">
+  <div id="carousel-sugerencias" class="product-carousel-track"></div>
+</div>
+
+    `;
+  } else {
+    contenedor.innerHTML = "<p>Producto no encontrado.</p>";
+  }
+
+  // Carrusel de sugerencias
+  const sugerencias = productosData.filter(p => p.id !== id).slice(0, 5);
+  const carrusel = document.getElementById("carousel-sugerencias");
+  carrusel.innerHTML = sugerencias.map(p => `
+    <div class="product-slide">
+      <img src="${p.img}" alt="${p.nombre}">
+      <div class="product-slide-title">${p.nombre}</div>
+    </div>
+  `).join("");
+</script>
+
 
   <!-- PIE DE PÁGINA -->
   <section class="contacto-ayuda">
