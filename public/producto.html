@@ -179,6 +179,44 @@
   border: none;
   border-radius: 2px;
 }
+.product-carousel-wrapper {
+  overflow-x: auto;
+  padding: 2rem 0;
+}
+
+.product-carousel-track {
+  display: flex;
+  gap: 1rem;
+}
+
+.product-slide {
+  flex: 0 0 220px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.product-slide:hover {
+  transform: scale(1.05);
+}
+
+.product-slide img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.product-slide-title {
+  background: #c8102e;
+  color: white;
+  padding: 0.7rem;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
 
 
   </style>
@@ -305,7 +343,7 @@
   }
 
   // Carrusel de sugerencias
-  const sugerencias = productosData.filter(p => p.id !== id).slice(0, 5);
+  const sugerencias = productosData.filter(p => p.id !== id).slice(0, 10);
   const carrusel = document.getElementById("carousel-sugerencias");
   carrusel.innerHTML = sugerencias.map(p => `
     <div class="product-slide">
@@ -313,6 +351,30 @@
       <div class="product-slide-title">${p.nombre}</div>
     </div>
   `).join("");
+   // Recomendaciones automáticas (excluye el actual)
+   // las 10 primeras
+
+  const carruselContenedor = document.getElementById("carousel-sugerencias");
+  carruselContenedor.innerHTML = sugerencias.map(prod => `
+    <div class="product-slide" onclick="location.href='producto.html?id=${prod.id}'">
+      <img src="${prod.img}" alt="${prod.nombre}" />
+      <div class="product-slide-title">${prod.nombre}</div>
+    </div>
+  `).join("");
+
+  // Auto-slide simple
+  let scrollPosition = 0;
+  const interval = 2500; // cada 2.5s
+  const slideWidth = 240; // ancho + gap
+
+  setInterval(() => {
+    if (carruselContenedor.scrollWidth - scrollPosition <= carruselContenedor.clientWidth + 10) {
+      scrollPosition = 0;
+    } else {
+      scrollPosition += slideWidth;
+    }
+    carruselContenedor.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  }, interval);
 </script>
 
 
