@@ -325,6 +325,133 @@ footer {
   font-size: 0.9rem;
   margin-top: 0;
 }
+/* === QUIÉNES SOMOS === */
+.quienes-somos {
+  padding: 3rem 1rem;
+  background: linear-gradient(160deg, #fff7e6 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo decorativo sutil (círculos blancos borrosos) */
+.quienes-somos::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.quienes-somos::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+/* Título principal */
+.titulo-central {
+  font-size: 2.8rem;
+  color: var(--color-principal);
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Descripción introductoria */
+.descripcion {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* Contenedor de las 3 tarjetas */
+.cards-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tarjetas con estilo glassmorphism mejorado */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  flex: 1 1 300px;
+  max-width: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-principal);
+  text-align: center;
+}
+
+.card p,
+.card ul {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Iconos estilo ✅ */
+.card li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.card li::before {
+  content: '✅';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .titulo-central {
+    font-size: 2rem;
+  }
+
+  .descripcion {
+    font-size: 1rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
 
 /* Responsive */
 @media (max-width: 768px) {
