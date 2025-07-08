@@ -363,7 +363,8 @@ footer {
   }
 }
 
-/* === GRID DE PRODUCTOS ELEGANTE === */
+/* === SECCIÓN: GRID DE PRODUCTOS === */
+/* Estructura de grilla responsiva para mostrar productos */
 .productos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -372,9 +373,10 @@ footer {
   padding: 0 1rem;
 }
 
+/* Caja individual del producto */
 .producto-box {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.85); /* fondo blanco suave */
+  backdrop-filter: blur(6px); /* efecto glass suave */
   border-radius: 1rem;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -383,11 +385,13 @@ footer {
   flex-direction: column;
 }
 
+/* Efecto al pasar el mouse por la caja del producto */
 .producto-box:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* Imagen del producto */
 .producto-box img {
   width: 100%;
   height: 200px;
@@ -395,10 +399,12 @@ footer {
   transition: transform 0.3s ease;
 }
 
+/* Efecto zoom suave sobre la imagen */
 .producto-box:hover img {
   transform: scale(1.02);
 }
 
+/* Información textual del producto (nombre, descripción) */
 .info-producto {
   padding: 1.2rem 1rem;
   display: flex;
@@ -406,6 +412,7 @@ footer {
   gap: 0.4rem;
 }
 
+/* Título del producto */
 .info-producto h3 {
   margin: 0;
   font-size: 1.2rem;
@@ -413,12 +420,14 @@ footer {
   font-weight: 700;
 }
 
+/* Descripción breve del producto */
 .info-producto p {
   font-size: 0.95rem;
   color: #444;
   line-height: 1.4;
 }
 
+/* Etiquetas de producto (ej: favorito, más vendido) */
 .etiqueta {
   display: inline-block;
   font-size: 0.8rem;
@@ -431,6 +440,7 @@ footer {
   letter-spacing: 0.5px;
 }
 
+/* Colores para las etiquetas según tipo */
 .etiqueta.favorito {
   background-color: #ffd700;
   color: #000;
@@ -441,7 +451,8 @@ footer {
   color: white;
 }
 
-/* === INPUT BUSCADOR ELEGANTE === */
+/* === SECCIÓN: INPUT DE BUSQUEDA === */
+/* Buscador elegante con animaciones al enfocar */
 .buscador {
   padding: 12px 16px;
   border: 1px solid #ccc;
@@ -456,13 +467,15 @@ footer {
   transition: all 0.3s ease;
 }
 
+/* Efecto de enfoque (focus) para buscador */
 .buscador:focus {
   outline: none;
   border-color: var(--color-principal);
   box-shadow: 0 0 0 3px rgba(246, 183, 60, 0.3);
 }
 
-/* === BOTÓN VOLVER ARRIBA PREMIUM === */
+/* === SECCIÓN: BOTÓN "VOLVER ARRIBA" === */
+/* Botón flotante para volver al inicio de la página */
 .volver-arriba {
   position: fixed;
   bottom: 20px;
@@ -479,16 +492,17 @@ footer {
   transition: all 0.3s ease;
 }
 
+/* Hover del botón de volver arriba */
 .volver-arriba:hover {
   background: linear-gradient(135deg, #57a85a, #3e8e41);
   transform: scale(1.05);
 }
 
-/* === PRODUCT CAROUSEL === (Ya integrado en hoja original) */
+/* === SECCIÓN: PRODUCT SLIDE GENERAL (CAROUSEL) === */
 .product-slide {
   transition: transform 0.3s ease;
 }
+
 .product-slide:hover {
   transform: scale(1.05);
 }
-
