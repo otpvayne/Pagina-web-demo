@@ -81,13 +81,21 @@ h1, h2, h3 {
 
 .menu li a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   font-weight: 600;
-  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15); /* efecto translúcido */
+  backdrop-filter: blur(6px); /* efecto glass */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .menu li a:hover {
-  color: #000;
+  background-color: #ffffff;
+  color: var(--color-principal);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .menu-toggle {
@@ -652,4 +660,70 @@ textarea:focus {
 
 .product-slide:hover {
   transform: scale(1.05);
+}
+.sucursales-section {
+  padding: 3rem 1rem;
+  background: linear-gradient(160deg, #fff7e6 0%, #ffffff 100%);
+}
+
+.filtro-ciudad {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background: white;
+  color: var(--color-principal);
+  border: 2px solid var(--color-principal);
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: var(--color-principal);
+  color: white;
+}
+
+.sucursales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.sucursal-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.sucursal-card iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.sucursal-card h3 {
+  color: var(--color-principal);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .sucursal-card iframe {
+    height: 180px;
+  }
 }
