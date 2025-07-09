@@ -748,10 +748,30 @@ textarea:focus {
     height: 180px;
   }
 }
-footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #222;
-      color: #eee;
-      font-size: 0.9rem;
-    }
+.footer-elegante {
+  background-color: #222;
+  color: #eee;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-elegante p {
+  margin: 0.2rem 0;
+  line-height: 1.2;
+}
+
+.footer-elegante .corazon {
+  color: #f87171;
+}
+
+.footer-elegante .credit-link {
+  color: #f6b73c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-elegante .credit-link:hover {
+  color: #fff7e6;
+}
