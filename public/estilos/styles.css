@@ -748,3 +748,10 @@ textarea:focus {
     height: 180px;
   }
 }
+footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #222;
+      color: #eee;
+      font-size: 0.9rem;
+    }
