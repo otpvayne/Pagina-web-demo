@@ -451,6 +451,27 @@ textarea:focus {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: var(--color-principal);
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 180px;
+    padding: 1rem;
+    border-radius: 12px;
+    z-index: 999;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
   .titulo-central {
     font-size: 2.3rem;
   }

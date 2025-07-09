@@ -60,7 +60,18 @@ setInterval(() => {
     logo?.addEventListener('mouseout', () => {
       logo.style.textShadow = 'none';
     });
-  
+    const menu = document.querySelector('.menu');
+  const toggle = document.querySelector('.menu-toggle');
+
+  if (menu && toggle) {
+    toggle.addEventListener('click', () => {
+      console.log('Botón hamburguesa clickeado');
+      menu.classList.toggle('active');
+    });
+  } else {
+    console.warn('No se encontró .menu o .menu-toggle');
+  }
+
     const form = document.getElementById('formulario-contacto');
     form?.addEventListener('submit', e => {
       e.preventDefault();
@@ -113,15 +124,7 @@ setInterval(() => {
       updateProductCarousel();
     });
   
-    const menu = document.querySelector('.menu');
-    const toggle = document.createElement('div');
-    toggle.classList.add('menu-toggle');
-    toggle.innerHTML = '<span></span><span></span><span></span>';
-    document.querySelector('.header-nav').appendChild(toggle);
   
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
   });
   // Productos dinámicos
   const productosData = [

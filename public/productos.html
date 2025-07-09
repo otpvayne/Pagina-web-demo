@@ -5,22 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Productos | La Casa del Kumis</title>
   <link rel="stylesheet" href="estilos/styles.css" />
-  <script defer src="scripts/script.js"></script>
+  
+
 </head>
 <body>
   <header class="sticky-header">
     <nav class="header-nav">
       <a href="index.html" class="logo">La Casa del Kumis</a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
       <ul class="menu">
         <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
-        <li><a href="productos.html" class="active">Productos</a></li>
+        <li><a href="productos.html">Productos</a></li>
         <li><a href="sucursales.html">Sucursales</a></li>
       </ul>
     </nav>
   </header>
-
+  
   <main class="container">
-  <a href="index.html"><button>⬅ Volver</button></a>
+    <a href="index.html"><button>⬅ Volver</button></a>
 
   <section class="productos-section">
     <h2 class="titulo-productos">Explora Nuestros Sabores</h2>
@@ -45,14 +51,29 @@
   </section>
 </main>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      console.log('clic');
+    });
+  } else {
+    console.log('no se encontró el botón o el menú');
+  }
+});
+</script>
 
 
 
 
-  <!-- Sección final igual -->
-  <section class="contacto-ayuda">
-    <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
-      <div style="flex: 1; min-width: 250px;">
+<!-- Sección final igual -->
+<section class="contacto-ayuda">
+  <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+    <div style="flex: 1; min-width: 250px;">
         <h3>Contáctanos</h3>
         <p><strong>Dirección:</strong> Cra 7 #21-34, Bogotá</p>
         <p><strong>Teléfonos:</strong> 301 234 5678 - 302 987 6543</p>
@@ -63,7 +84,7 @@
         <h3>Ayuda</h3>
         <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
         <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
-
+        
         <h3>Síguenos</h3>
         <div class="social">
           <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.svg" alt="Facebook" /></a>
@@ -73,9 +94,10 @@
       </div>
     </div>
   </section>
-
+  
   <footer>
     <p>&copy; 2025 La Casa del Kumis. Todos los derechos reservados.</p>
   </footer>
+  <script defer src="scripts/script.js"></script>
 </body>
 </html>

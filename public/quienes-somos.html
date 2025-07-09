@@ -11,6 +11,11 @@
   <header class="sticky-header">
     <nav class="header-nav">
       <a href="index.html" class="logo">La Casa del Kumis</a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
       <ul class="menu">
         <li><a href="quienes-somos.html" class="active">¿Quiénes Somos?</a></li>
         <li><a href="productos.html">Productos</a></li>
@@ -48,8 +53,21 @@
     </div>
   </section>
 </main>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
 
-
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      console.log('clic');
+    });
+  } else {
+    console.log('no se encontró el botón o el menú');
+  }
+});
+</script>
   <section class="contacto-ayuda">
     <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
       <div style="flex: 1; min-width: 250px;">
