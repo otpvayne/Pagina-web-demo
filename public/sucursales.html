@@ -191,8 +191,58 @@
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
+/* Vista tipo carrusel en móviles */
+@media (max-width: 768px) {
+  .sucursales-grid {
+    -ms-overflow-style: none;
+  scrollbar-width: none;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
 
+  .sucursal-card {
+    min-width: 85%;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .sucursales-grid::-webkit-scrollbar {
+  display: none;
+}
+}
     
+.paginacion {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.paginacion button {
+  background-color: var(--color-principal);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.paginacion button:hover,
+.paginacion button.activo {
+  background-color: #d9982d;
+}
+
+@media (max-width: 768px) {
+  .paginacion {
+    display: none;
+  }
+}
 
     button {
       cursor: pointer;
@@ -356,8 +406,9 @@
   <iframe src="" loading="lazy"></iframe>
 </div>
 
-      </div>
-    </section>
+</div>
+</section>
+<div class="paginacion"></div>
   </main>
 <section class="contacto-ayuda">
     <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
@@ -487,6 +538,82 @@
     });
   } else {
     console.log('no se encontró el botón o el menú');
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const CARDS_POR_PAGINA = 6;
+  const contenedorPaginacion = document.querySelector(".paginacion");
+  const anchoPantalla = window.innerWidth;
+
+  function mostrarPagina(filtroCiudad, pagina) {
+    const cards = document.querySelectorAll('.sucursal-card');
+    let cardsFiltradas = [];
+
+    // Filtrar las tarjetas según la ciudad
+    if (filtroCiudad === "todas") {
+      cardsFiltradas = Array.from(cards);
+    } else {
+      cardsFiltradas = Array.from(cards).filter(card => card.dataset.ciudad === filtroCiudad);
+    }
+
+    const totalPaginas = Math.ceil(cardsFiltradas.length / CARDS_POR_PAGINA);
+
+    // Ocultar todas las tarjetas primero
+    cards.forEach(card => card.classList.add('ocultar'));
+
+    const inicio = (pagina - 1) * CARDS_POR_PAGINA;
+    const fin = inicio + CARDS_POR_PAGINA;
+
+    cardsFiltradas.forEach((card, index) => {
+      if (index >= inicio && index < fin) {
+        card.classList.remove('ocultar');
+      }
+    });
+
+    // Crear botones de paginación solo si hay más de una página
+    contenedorPaginacion.innerHTML = "";
+    if (totalPaginas > 1 && anchoPantalla > 768) {
+      for (let i = 1; i <= totalPaginas; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === pagina) btn.classList.add("activo");
+        btn.addEventListener("click", () => mostrarPagina(filtroCiudad, i));
+        contenedorPaginacion.appendChild(btn);
+      }
+    }
+  }
+
+  // Evento para los botones de filtro
+  document.querySelectorAll('.filtro-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+
+      const ciudadSeleccionada = btn.dataset.ciudad;
+      const cards = document.querySelectorAll('.sucursal-card');
+
+      // Mostrar paginación en todos los casos
+      if (anchoPantalla > 768) {
+        mostrarPagina(ciudadSeleccionada, 1);
+      } else {
+        // Modo móvil: mostrar todas las tarjetas visibles de esa ciudad
+        cards.forEach(card => {
+          const ciudadCard = card.dataset.ciudad;
+          if (ciudadSeleccionada === 'todas' || ciudadCard === ciudadSeleccionada) {
+            card.classList.remove('ocultar');
+          } else {
+            card.classList.add('ocultar');
+          }
+        });
+        contenedorPaginacion.innerHTML = "";
+      }
+    });
+  });
+
+  // Cargar al inicio
+  const activa = document.querySelector(".filtro-btn.activo");
+  if (activa && anchoPantalla > 768) {
+    mostrarPagina(activa.dataset.ciudad, 1);
   }
 });
   </script>
