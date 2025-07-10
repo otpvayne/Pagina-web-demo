@@ -72,6 +72,11 @@ h1, h2, h3 {
 .logo:hover {
   transform: scale(1.05);
 }
+.logo img {
+  height: 48px;
+  max-width: 100%;
+  display: block;
+}
 
 .menu {
   list-style: none;
