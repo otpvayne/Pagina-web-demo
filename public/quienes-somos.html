@@ -33,7 +33,6 @@
   <h2 class="titulo-central">Conoce Nuestra Esencia</h2>
   <p class="descripcion">
 Somos una empresa <strong>100% llanera </strong>con más de 70 años de tradición y calidad, llevando lo mejor de nuestra región a tu mesa.  </p>
-
   <div class="cards-info-carrusel">
     <div class="card">
       <h3> Misión</h3>
@@ -87,6 +86,14 @@ Somos una empresa <strong>100% llanera </strong>con más de 70 años de tradici�
   } else {
     console.log('no se encontró el botón o el menú');
   }
+  document.addEventListener("DOMContentLoaded", () => {
+  const cardsContainer = document.querySelector(".cards-info");
+  if (window.innerWidth <= 768 && cardsContainer) {
+    setTimeout(() => {
+      cardsContainer.scrollBy({ left: 120, behavior: 'smooth' });
+    }, 800); // retrasa un poco para que el usuario lo note
+  }
+});
 });
 </script>
   <section class="contacto-ayuda">
