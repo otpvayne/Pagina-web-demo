@@ -202,19 +202,25 @@ setInterval(() => {
   }
 
   function renderPaginacion() {
-    const totalPages = Math.ceil(productosFiltrados.length / itemsPerPage);
-    paginacion.innerHTML = "";
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement("button");
-      btn.textContent = i;
-      btn.className = i === currentPage ? "activo" : "";
-      btn.addEventListener("click", () => {
-        currentPage = i;
-        renderProductos();
+  const totalPages = Math.ceil(productosFiltrados.length / itemsPerPage);
+  paginacion.innerHTML = "";
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.className = i === currentPage ? "activo" : "";
+    btn.addEventListener("click", () => {
+      currentPage = i;
+      renderProductos();
+
+      // Subir la vista al inicio de la sección de productos
+      document.querySelector(".productos-section").scrollIntoView({
+        behavior: "smooth"
       });
-      paginacion.appendChild(btn);
-    }
+    });
+    paginacion.appendChild(btn);
   }
+}
+
 
   filtroBtns.forEach(btn => {
     btn.addEventListener("click", () => {
