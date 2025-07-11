@@ -376,6 +376,88 @@ textarea:focus {
   position: relative;
   z-index: 1;
 }
+/* Cards horizontal en móviles */
+.cards-info-carrusel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  scroll-snap-type: x mandatory;
+  padding: 2rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cards-info-carrusel .card {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  min-width: 280px;
+  max-width: 340px;
+  margin: auto;
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.cards-info-carrusel .card:hover {
+  transform: translateY(-5px);
+}
+
+.cards-info-carrusel .card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+  position: relative;
+}
+
+.cards-info-carrusel .card h3::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-principal);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cards-info-carrusel .card ul {
+  padding-left: 1.2rem;
+  list-style: none;
+}
+
+.cards-info-carrusel .card li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  padding-left: 1.2rem;
+}
+
+.cards-info-carrusel .card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-principal);
+  font-weight: bold;
+}
+
+.cards-info-carrusel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Escritorio: rejilla como antes */
+@media (min-width: 768px) {
+  .cards-info-carrusel {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .cards-info-carrusel .card {
+    flex: 0 0 calc(45% - 2rem);
+    max-width: 500px;
+  }
+}
 
 /* Tarjeta refinada */
 .card {
@@ -496,6 +578,47 @@ textarea:focus {
     font-size: 1rem;
     margin-bottom: 2rem;
   }
+}
+.quienes-img-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.quienes-img {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.quienes-img:hover {
+  transform: scale(1.02);
+}
+.quienes-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.quienes-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.btn-pdf {
+  display: inline-block;
+  background-color: var(--color-principal);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-pdf:hover {
+  background-color: #e59f00;
 }
 
 /* Responsive para móviles */
