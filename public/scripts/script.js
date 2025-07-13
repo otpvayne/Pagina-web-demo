@@ -130,7 +130,7 @@ setInterval(() => {
   const productosData = [
     { id: "fresa",nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
     { id: "Tradicional",nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
-    { id: "Durazno" , nombre: "Kumis con Durazno", img: "images/kumis-durazno.jpg", desc: "Dulce natural con un toque de durazno maduro.", categorias: ["mas-vendido"] },
+    { id: "Durazno" , nombre: "Kumis con Durazno", img: "images/kumis1.png", desc: "Dulce natural con un toque de durazno maduro.", categorias: ["mas-vendido"] },
     { id: "Mango" , nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.", categorias: ["mas-vendido"] },
     { id: "Light" , nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.", categorias: ["mas-vendido"] },
     { id: "Mora" , nombre: "Kumis con Mora", img: "images/kumis-mora.jpg", desc: "Una explosión de sabor con mora fresca.", categorias: ["mas-vendido"] },
