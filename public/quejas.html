@@ -85,7 +85,28 @@ form button:hover {
     font-size: 0.95rem;
   }
 }
+/* Sección de título */
+.titulo-seccion {
+  font-size: 2.3rem;
+  text-align: center;
+  color: var(--color-principal, #f6b73c);
+  margin-bottom: 0.5rem;
+}
 
+.descripcion-seccion {
+  text-align: center;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Ajuste visual de sección quejas */
+.seccion-quejas {
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+}
   </style>
 <body>
   <header class="sticky-header">
@@ -107,38 +128,45 @@ form button:hover {
   </header>
 
   <main class="container">
-    <a href="index.html"><button>⬅ Volver</button></a>
-    <h2>Quejas, Peticiones o Felicitaciones</h2>
+  <a href="index.html"><button>⬅ Volver</button></a>
+
+  <section class="seccion-quejas">
+    <h2 class="titulo-seccion">Quejas, Peticiones o Felicitaciones</h2>
+    <p class="descripcion-seccion">
+      Tu opinión es muy importante para nosotros. Diligencia el siguiente formulario y te responderemos lo más pronto posible.
+    </p>
+
     <form id="form-queja" enctype="multipart/form-data">
-  <input name="nombre" placeholder="Nombre y Apellidos" required />
-  <input type="email" name="email" placeholder="Correo Electrónico" required />
-  <input name="telefono" placeholder="Teléfono Móvil" required />
+      <input name="nombre" placeholder="Nombre y Apellidos" required />
+      <input type="email" name="email" placeholder="Correo Electrónico" required />
+      <input name="telefono" placeholder="Teléfono Móvil" required />
 
-  <select name="sucursal" required>
-    <option value="">Seleccione una sucursal</option>
-    <option value="Bogotá">Bogotá</option>
-    <option value="Villavicencio">Villavicencio</option>
-    <option value="Bucaramanga">Bucaramanga</option>
-  </select>
+      <select name="sucursal" required>
+        <option value="">Seleccione una sucursal</option>
+        <option value="Bogotá">Bogotá</option>
+        <option value="Villavicencio">Villavicencio</option>
+        <option value="Bucaramanga">Bucaramanga</option>
+      </select>
 
-  <select name="asunto" required>
-    <option value="">Seleccione el asunto</option>
-    <option value="Queja">Queja</option>
-    <option value="Petición">Petición</option>
-    <option value="Reclamo">Reclamo</option>
-    <option value="Felicitación">Felicitación</option>
-  </select>
+      <select name="asunto" required>
+        <option value="">Seleccione el asunto</option>
+        <option value="Queja">Queja</option>
+        <option value="Petición">Petición</option>
+        <option value="Reclamo">Reclamo</option>
+        <option value="Felicitación">Felicitación</option>
+      </select>
 
-  <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
-  <label>Adjuntar archivo (opcional):
-    <input type="file" name="archivo" />
-  </label>
-  <button type="submit">Enviar</button>
-</form>
+      <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
 
-<p id="estado-queja"></p>
+      <label style="font-weight: 500;">Adjuntar archivo (opcional):</label>
+      <input type="file" name="archivo" />
 
-  </main>
+      <button type="submit">Enviar</button>
+      <p id="estado-queja" style="text-align: center; margin-top: 1rem; font-weight: bold; color: #444;"></p>
+    </form>
+  </section>
+</main>
+
 <script>
 document.getElementById('form-queja').addEventListener('submit', async e => {
   e.preventDefault();
