@@ -7,6 +7,9 @@ const { google } = require('googleapis');
 const cors = require('cors');
 const { createClient } = require('@libsql/client'); // Turso
 const path = require('path');
+const nodemailer = require('nodemailer');
+// Asegúrate de tener las variables de entorno configuradas en un archivo .env
+// TURSO_URL, TURSO_TOKEN, GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_FOLDER_ID
 
 const app = express();
 app.use(cors());
@@ -102,6 +105,37 @@ await drive.files.update({
     });
 
     res.status(200).send('Formulario enviado con éxito.');
+    // Crear transporte con nodemailer
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_FROM,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+// Contenido del correo
+const mailOptions = {
+  from: `"La Casa del Kumis" <${process.env.EMAIL_FROM}>`,
+  to: process.env.EMAIL_TO,
+  subject: `📩 Nueva postulación - ${nombre}`,
+  html: `
+    <h2>📋 Nueva postulación recibida</h2>
+    <ul>
+      <li><strong>Nombre:</strong> ${nombre}</li>
+      <li><strong>Correo:</strong> ${email}</li>
+      <li><strong>Teléfono:</strong> ${telefono}</li>
+      <li><strong>Cargo:</strong> ${cargo}</li>
+      <li><strong>Mensaje:</strong> ${mensaje || '(Sin mensaje)'}</li>
+      <li><strong>Archivo:</strong> <a href="${fileUrl}" target="_blank">Ver archivo</a></li>
+      <li><strong>Fecha:</strong> ${new Date(fecha).toLocaleString('es-CO', { timeZone: 'America/Bogota' })}</li>
+    </ul>
+  `,
+};
+
+await transporter.sendMail(mailOptions);
+console.log('✅ Correo enviado al cliente');
+
   } catch (error) {
     console.error('❌ Error:', error);
     res.status(500).send('Error al procesar el formulario.');
