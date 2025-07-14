@@ -7,6 +7,86 @@
   <link rel="stylesheet" href="estilos/styles.css" />
   <script defer src="scripts/script.js"></script>
 </head>
+<style>
+  /* === FORMULARIO DE CONTACTO/QUEJAS === */
+form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  max-width: 700px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+form h1,
+form h2 {
+  text-align: center;
+  color: #333;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--color-principal, #f6b73c);
+  box-shadow: 0 0 0 3px rgba(246, 183, 60, 0.3);
+  background-color: #fff;
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+form label {
+  font-weight: bold;
+  color: #555;
+}
+
+form button {
+  background-color: var(--color-principal, #f6b73c);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #e0a200;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    padding: 1.5rem;
+  }
+
+  form button {
+    font-size: 0.95rem;
+  }
+}
+
+  </style>
 <body>
   <header class="sticky-header">
     <nav class="header-nav">
