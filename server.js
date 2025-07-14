@@ -50,7 +50,26 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 // ID de la carpeta de destino en Drive
 const FOLDER_ID = process.env.GOOGLE_FOLDER_ID; // 👈 reemplaza con tu ID real
+// Función reutilizable para enviar correos (para postulaciones y quejas)
+async function enviarCorreo({ to, subject, html }) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_FROM,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
+  await transporter.sendMail({
+    from: `"La Casa del Kumis" <${process.env.EMAIL_FROM}>`,
+    to,
+    subject,
+    html,
+  });
+
+  console.log(`📩 Correo enviado a ${to}`);
+}
+// Ruta para manejar el formulario de postulaciones
 app.post('/api/formulario', upload.single('archivo'), async (req, res) => {
   try {
     const { nombre, email, telefono, cargo, mensaje } = req.body;
