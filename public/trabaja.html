@@ -25,22 +25,31 @@
     </nav>
   </header>
 
-  <main class="container">
-    <a href="index.html"><button>⬅ Volver</button></a>
-    <h2>Trabaja con nosotros</h2>
-    <h1>Formulario de Postulación</h1>
+  <main class="container trabaja-seccion">
+  <a href="index.html"><button class="btn-volver">⬅ Volver</button></a>
 
-    <form id="formulario" enctype="multipart/form-data">
-      <input name="nombre" placeholder="Nombre" required><br>
-      <input name="email" placeholder="Correo" type="email" required><br>
-      <input name="telefono" placeholder="Teléfono" required><br>
-      <input name="cargo" placeholder="Cargo" required><br>
-      <textarea name="mensaje" placeholder="Mensaje"></textarea><br>
-      <input type="file" name="archivo" required><br>
-      <button type="submit">Enviar</button>
-    </form>
+  <h2 class="titulo-central">Trabaja con nosotros</h2>
+  <p class="descripcion">
+    Si compartes nuestra pasión por la calidad, el sabor y la tradición, este es tu lugar. Completa el formulario y haz parte de nuestra familia.
+  </p>
 
-    <p id="estado"></p>
+  <form id="formulario" enctype="multipart/form-data" class="formulario-trabajo">
+    <div class="form-grid">
+      <input name="nombre" placeholder="Nombre completo" required />
+      <input name="email" placeholder="Correo electrónico" type="email" required />
+      <input name="telefono" placeholder="Número de teléfono" required />
+      <input name="cargo" placeholder="Cargo al que aspiras" required />
+      <textarea name="mensaje" placeholder="Cuéntanos brevemente sobre ti..."></textarea>
+      <label class="input-file">
+        Adjuntar hoja de vida
+        <input type="file" name="archivo" required />
+      </label>
+    </div>
+    <button type="submit" class="boton-enviar">Enviar postulación</button>
+    <p id="estado" class="estado-formulario"></p>
+  </form>
+</main>
+
 
     <script>
       document.getElementById('formulario').addEventListener('submit', async (e) => {

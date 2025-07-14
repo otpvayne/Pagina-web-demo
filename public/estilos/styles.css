@@ -913,3 +913,97 @@ textarea:focus {
 .footer-elegante .credit-link:hover {
   color: #fff7e6;
 }
+.trabaja-seccion {
+  padding-top: 2rem;
+}
+
+.formulario-trabajo {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.formulario-trabajo input,
+.formulario-trabajo textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: border 0.3s ease;
+}
+
+.formulario-trabajo input:focus,
+.formulario-trabajo textarea:focus {
+  border-color: var(--color-principal);
+  outline: none;
+}
+
+.formulario-trabajo textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.input-file {
+  background-color: #f7f7f7;
+  padding: 0.9rem 1rem;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  color: #333;
+  position: relative;
+}
+
+.input-file input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.boton-enviar {
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.boton-enviar:hover {
+  background-color: #e59f00;
+}
+
+.estado-formulario {
+  margin-top: 1rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .formulario-trabajo {
+    padding: 1.5rem;
+  }
+
+  .form-grid {
+    gap: 1rem;
+  }
+}
