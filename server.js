@@ -191,3 +191,54 @@ app.get('/api/descargar-postulaciones', async (req, res) => {
     res.status(500).send('Error al generar el archivo.');
   }
 });
+app.post('/api/quejas', upload.single('archivo'), async (req, res) => {
+  try {
+    const { nombre, email, telefono, sucursal, asunto, mensaje } = req.body;
+    const archivo = req.file;
+
+    const { Readable } = require('stream');
+    const fileMetadata = { name: archivo?.originalname || 'archivo_usuario' };
+    const media = archivo ? { mimeType: archivo.mimetype, body: Readable.from(archivo.buffer) } : null;
+
+    let fileUrl = '';
+    if (archivo) {
+      const result = await drive.files.create({ resource: fileMetadata, media, fields: 'id' });
+      const fileId = result.data.id;
+
+      await drive.files.update({ fileId, addParents: process.env.GOOGLE_FOLDER_QUEJAS_ID || process.env.GOOGLE_FOLDER_ID });
+      await drive.permissions.create({ fileId, requestBody: { role: 'reader', type: 'anyone' } });
+      fileUrl = `https://drive.google.com/file/d/${fileId}/view`;
+    }
+
+    const fecha = new Date().toISOString();
+
+    await turso.execute({
+      sql: `
+        INSERT INTO quejas (nombre, email, telefono, sucursal, asunto, mensaje, archivo_url, fecha_envio)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `,
+      args: [nombre, email, telefono, sucursal, asunto, mensaje, fileUrl, fecha],
+    });
+
+    // ENVÍO OPCIONAL AL CORREO
+    await enviarCorreo({
+      to: process.env.EMAIL_DESTINO,
+      subject: `[QUEJA] ${asunto} de ${nombre}`,
+      html: `
+        <h2>Formulario de Quejas</h2>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Teléfono:</strong> ${telefono}</p>
+        <p><strong>Sucursal:</strong> ${sucursal}</p>
+        <p><strong>Asunto:</strong> ${asunto}</p>
+        <p><strong>Mensaje:</strong><br>${mensaje}</p>
+        ${fileUrl ? `<p><strong>Archivo:</strong> <a href="${fileUrl}" target="_blank">Ver archivo</a></p>` : ''}
+      `,
+    });
+
+    res.status(200).send('✅ Queja enviada con éxito');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('❌ Error al enviar la queja.');
+  }
+});

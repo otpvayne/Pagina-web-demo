@@ -29,50 +29,65 @@
   <main class="container">
     <a href="index.html"><button>⬅ Volver</button></a>
     <h2>Quejas, Peticiones o Felicitaciones</h2>
-    <form action="https://formsubmit.co/jkmgjunior2@gmail.com" method="POST" enctype="multipart/form-data">
-      <input type="text" name="nombre" placeholder="Nombre y Apellidos" required />
-      <input type="email" name="email" placeholder="Correo Electrónico" required />
-      <input type="tel" name="telefono" placeholder="Teléfono Móvil" required />
+    <form id="form-queja" enctype="multipart/form-data">
+  <input name="nombre" placeholder="Nombre y Apellidos" required />
+  <input type="email" name="email" placeholder="Correo Electrónico" required />
+  <input name="telefono" placeholder="Teléfono Móvil" required />
 
-      <select name="sucursal" required>
-        <option value="">Seleccione una sucursal</option>
-        <option value="centro">Centro - Bogotá</option>
-        <option value="norte">Norte - Bogotá</option>
-        <option value="sur">Sur - Bogotá</option>
-      </select>
+  <select name="sucursal" required>
+    <option value="">Seleccione una sucursal</option>
+    <option value="Bogotá">Bogotá</option>
+    <option value="Villavicencio">Villavicencio</option>
+    <option value="Bucaramanga">Bucaramanga</option>
+  </select>
 
-      <select name="asunto" required>
-        <option value="">Seleccione el asunto</option>
-        <option value="queja">Queja</option>
-        <option value="peticion">Petición</option>
-        <option value="reclamo">Reclamo</option>
-        <option value="felicitacion">Felicitación</option>
-      </select>
+  <select name="asunto" required>
+    <option value="">Seleccione el asunto</option>
+    <option value="Queja">Queja</option>
+    <option value="Petición">Petición</option>
+    <option value="Reclamo">Reclamo</option>
+    <option value="Felicitación">Felicitación</option>
+  </select>
 
-      <label>Adjuntar archivo:
-        <input type="file" name="archivo" />
-      </label>
+  <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+  <label>Adjuntar archivo (opcional):
+    <input type="file" name="archivo" />
+  </label>
+  <button type="submit">Enviar</button>
+</form>
 
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
-      <button type="submit">Enviar</button>
-    </form>
+<p id="estado-queja"></p>
+
   </main>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu');
+document.getElementById('form-queja').addEventListener('submit', async e => {
+  e.preventDefault();
+  const estado = document.getElementById('estado-queja');
+  estado.textContent = 'Enviando...';
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-      console.log('clic');
+  const formData = new FormData(e.target);
+  try {
+    const res = await fetch('/api/quejas', {
+      method: 'POST',
+      body: formData
     });
-  } else {
-    console.log('no se encontró el botón o el menú');
+    const msg = await res.text();
+    if (res.ok) {
+      alert('✅ Tu mensaje fue enviado con éxito');
+      estado.textContent = '';
+      e.target.reset();
+    } else {
+      alert('❌ ' + msg);
+      estado.textContent = msg;
+    }
+  } catch (err) {
+    alert('❌ Error de conexión');
+    console.error(err);
+    estado.textContent = 'Error al enviar.';
   }
 });
 </script>
+
   <section class="contacto-ayuda">
     <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
       <img src="images/logo.png" alt="Logo La Casa del Kumis" class="logo-contacto" />
