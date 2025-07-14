@@ -241,7 +241,7 @@ app.post('/api/quejas', upload.single('archivo'), async (req, res) => {
 
     // ENVÍO OPCIONAL AL CORREO
     await enviarCorreo({
-      to: process.env.EMAIL_DESTINO,
+      to: process.env.EMAIL_TO,
       subject: `[QUEJA] ${asunto} de ${nombre}`,
       html: `
         <h2>Formulario de Quejas</h2>
