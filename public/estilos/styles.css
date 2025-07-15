@@ -546,7 +546,26 @@ textarea:focus {
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
+  /* Carrusel de productos */
+  .product-slide img {
+    height: auto !important; /* Evita recortes */
+    object-fit: contain !important;
+    padding: 8px;
+    background-color: white;
+  }
+
+  /* Grid de productos */
+  .producto-box img {
+    height: auto !important;
+    object-fit: contain !important;
+    padding: 8px;
+    display: block;
+    max-width: 100%;
+    background-color: white;
+  }
+
+
   .menu {
     display: none;
     flex-direction: column;
