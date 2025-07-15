@@ -194,8 +194,11 @@ h1, h2, h3 {
 
 .product-slide img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: auto; /* Antes: height: 200px; */
+  object-fit: contain; /* Contenido visible sin recorte */
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .product-slide-title {
