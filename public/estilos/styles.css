@@ -1029,3 +1029,31 @@ textarea:focus {
     gap: 1rem;
   }
 }
+/* === Casilla de aceptación de políticas === */
+.aceptacion-politicas {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+
+.aceptacion-politicas input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--color-principal); /* color del check */
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.aceptacion-politicas a {
+  color: var(--color-principal);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.aceptacion-politicas a:hover {
+  color: #e59f00;
+}
