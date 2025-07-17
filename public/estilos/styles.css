@@ -1,9 +1,9 @@
 :root {
-  --color-principal: #f6b73c;
-  --color-secundario: #fff7e6;
+  --color-principal: #d51f27;
+  --color-secundario: #f0f0f0;
   --color-contacto: #f0f0f0;
   --color-texto: #333;
-  --fuente-principal: 'Montserrat', sans-serif;
+  --fuente-principal: 'Cooper BT Black', sans-serif;
 }
 
 * {
@@ -29,6 +29,7 @@ h1, h2, h3 {
   font-weight: 700;
   color: #222;
   letter-spacing: 0.5px;
+  font-family: var(--fuente-principal);
 }
 
 
@@ -73,10 +74,18 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 .logo img {
-  height: 48px;
-  max-width: 100%;
+  background-color: #fff;
+  padding: 10px 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  height: 96px !important; /* Aumento del 20% y forzado */
+  max-height: 96px !important;
+  width: auto;
+  transition: all 0.3s ease;
   display: block;
 }
+
+
 
 .menu {
   list-style: none;
@@ -238,7 +247,7 @@ h1, h2, h3 {
 /* Estilo elegante de botones */
 button,
 a button {
-  background: linear-gradient(135deg, #f6b73c, #e59f00);
+  background: var(--color-principal);
   color: #fff;
   border: none;
   padding: 0.9rem 1.8rem;
@@ -251,6 +260,7 @@ a button {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  font-family: var(--fuente-principal);
 }
 
 button::before {
@@ -312,7 +322,7 @@ textarea:focus {
   object-fit: contain;
 }
 .logo-contacto {
-  max-width: 200px;
+  max-width: 210px;
   height: auto;
   margin-bottom: 1rem;
 }
@@ -320,7 +330,7 @@ textarea:focus {
 /* === NUEVO ESTILO: Sección ¿Quiénes Somos? mejorada === */
 .quienes-somos {
   padding: 4rem 1rem;
-  background: linear-gradient(to bottom right, #fffaf0, #ffffff);
+  background: linear-gradient(to bottom right, #f0f0f0, #ffffff);
   position: relative;
   overflow: hidden;
 }
@@ -542,7 +552,7 @@ textarea:focus {
 }
 
 .quienes-somos button:hover {
-  background-color: #e59f00;
+  background-color: var(--color-principal);
 }
 
 /* RESPONSIVE */
@@ -640,7 +650,7 @@ textarea:focus {
 }
 
 .btn-pdf:hover {
-  background-color: #e59f00;
+  background-color: var(--color-principal);
 }
 
 /* Responsive para móviles */
@@ -778,7 +788,7 @@ textarea:focus {
 
 /* Colores para las etiquetas según tipo */
 .etiqueta.favorito {
-  background-color: #ffd700;
+  background-color: var(--color-principal);
   color: #000;
 }
 
@@ -844,7 +854,7 @@ textarea:focus {
 }
 .sucursales-section {
   padding: 3rem 1rem;
-  background: linear-gradient(160deg, #fff7e6 0%, #ffffff 100%);
+  background: linear-gradient(160deg, #f0f0f0 0%, #ffffff 100%);
 }
 
 .filtro-ciudad {
@@ -926,7 +936,7 @@ textarea:focus {
 }
 
 .footer-elegante .credit-link {
-  color: #f6b73c;
+  color: var(--color-principal);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -1011,7 +1021,7 @@ textarea:focus {
 }
 
 .boton-enviar:hover {
-  background-color: #e59f00;
+  background-color: var(--color-principal);
 }
 
 .estado-formulario {
@@ -1055,5 +1065,5 @@ textarea:focus {
 }
 
 .aceptacion-politicas a:hover {
-  color: #e59f00;
+  color: var(--color-principal);
 }
