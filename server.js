@@ -136,7 +136,7 @@ const transporter = nodemailer.createTransport({
 // Contenido del correo
 const mailOptions = {
   from: `"La Casa del Kumis" <${process.env.EMAIL_FROM}>`,
-  to: process.env.EMAIL_TO,
+  to: [process.env.EMAIL_TO, process.env.EMAIL_CC],
   subject: `📩 Nueva postulación - ${nombre}`,
   html: `
     <h2>📋 Nueva postulación recibida</h2>
@@ -241,7 +241,7 @@ app.post('/api/quejas', upload.single('archivo'), async (req, res) => {
 
     // ENVÍO OPCIONAL AL CORREO
     await enviarCorreo({
-      to: process.env.EMAIL_TO,
+      to: [process.env.EMAIL_TO, process.env.EMAIL_CC],
       subject: `[QUEJA] ${asunto} de ${nombre}`,
       html: `
         <h2>Formulario de Quejas</h2>
