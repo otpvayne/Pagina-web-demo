@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Productos | La Casa del Kumis</title>
-  <link rel="stylesheet" href="estilos/styles.css" />
-  
+  <meta name="description" content="Descubre todos los sabores de kumis artesanal de La Casa del Kumis. Kumis natural, fresco y delicioso: mora, fresa, guayaba, durazno y más." />
+  <meta name="keywords" content="productos kumis, kumis artesanal, kumis natural, sabores de kumis, kumis Colombia, casa del kumis" />
+  <meta name="author" content="La Casa del Kumis" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pagina-web-demo.onrender.com/productos.html" />
 
+  <title>Productos de Kumis Artesanal | La Casa del Kumis</title>
+
+  <link rel="stylesheet" href="estilos/styles.css" />
 </head>
+
 <body>
   <header class="sticky-header">
     <nav class="header-nav">
       <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="La Casa del Kumis Logo" style="height: 80px;" />
-        </a>
+        <img src="images/logo.png" alt="Logo de La Casa del Kumis" style="height: 80px;" />
+      </a>
       <button class="menu-toggle" aria-label="Abrir menú">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul class="menu">
         <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
         <li><a href="productos.html">Productos</a></li>
@@ -30,85 +36,81 @@
   <main class="container">
     <a href="index.html"><button>⬅ Volver</button></a>
 
-  <section class="productos-section">
-    <h2 class="titulo-productos">Explora Nuestros Sabores</h2>
+    <section class="productos-section">
+      <h2 class="titulo-productos">Sabores de Kumis Artesanal</h2>
 
-    <!-- Controles -->
-    <div class="filtros">
-      <button class="filtro-btn activo" data-filtro="todos">Todos</button>
-      <button class="filtro-btn" data-filtro="favorito">Favoritos</button>
-      <button class="filtro-btn" data-filtro="mas-vendido">Más vendidos</button>
-      <select id="ordenar" class="ordenar-select">
-        <option value="">Ordenar por...</option>
-        <option value="nombre-asc">Nombre A-Z</option>
-        <option value="nombre-desc">Nombre Z-A</option>
-      </select>
-    </div>
+      <!-- Controles -->
+      <div class="filtros">
+        <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+        <button class="filtro-btn" data-filtro="favorito">Favoritos</button>
+        <button class="filtro-btn" data-filtro="mas-vendido">Más vendidos</button>
+        <select id="ordenar" class="ordenar-select">
+          <option value="">Ordenar por...</option>
+          <option value="nombre-asc">Nombre A-Z</option>
+          <option value="nombre-desc">Nombre Z-A</option>
+        </select>
+      </div>
 
-    <!-- Productos -->
-    <div id="productos-container" class="productos-grid"></div>
+      <!-- Productos -->
+      <div id="productos-container" class="productos-grid"></div>
 
-    <!-- Paginación -->
-    <div class="paginacion" id="paginacion"></div>
-  </section>
-</main>
+      <!-- Paginación -->
+      <div class="paginacion" id="paginacion"></div>
+    </section>
+  </main>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.menu');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu');
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-      console.log('clic');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('active');
+          console.log('clic');
+        });
+      } else {
+        console.log('no se encontró el botón o el menú');
+      }
     });
-  } else {
-    console.log('no se encontró el botón o el menú');
-  }
-});
-</script>
+  </script>
 
-
-
-
-<!-- Sección final igual -->
-<section class="contacto-ayuda">
-  <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
-    <img src="images/logo.png" alt="Logo La Casa del Kumis" class="logo-contacto" />
-    <div style="flex: 1; min-width: 250px;">
+  <section class="contacto-ayuda">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+      <img src="images/logo.png" alt="Logo La Casa del Kumis" class="logo-contacto" />
+      <div style="flex: 1; min-width: 250px;">
         <h3>Contáctanos</h3>
         <p><strong>Dirección:</strong> CALLE 37 # 31A 10 Villavicencio</p>
         <p><strong>Teléfonos:</strong> 6661352 - 3174075190</p>
-        <p><strong>Ciudad:</strong> Bogotá,Villavicencio y Bucaramanga</p>
+        <p><strong>Ciudad:</strong> Bogotá, Villavicencio y Bucaramanga</p>
         <p><strong>Email:</strong> Casadelkumis1950@hotmail.com</p>
       </div>
       <div style="flex: 1; min-width: 250px;">
         <h3>Ayuda</h3>
         <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
         <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
-        
         <h3>Síguenos</h3>
         <div class="social">
-          <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.svg" alt="Facebook" /></a>
-          <a href="https://instagram.com/lacasadelkumis" target="_blank"><img src="images/instagram.svg" alt="Instagram" /></a>
-          <a href="https://tiktok.com/@lacasadelkumis" target="_blank"><img src="images/tiktok.svg" alt="TikTok" /></a>
+          <a href="https://facebook.com/lacasadelkumis" target="_blank"><img src="images/facebook.svg" alt="Facebook de La Casa del Kumis" /></a>
+          <a href="https://instagram.com/lacasadelkumis" target="_blank"><img src="images/instagram.svg" alt="Instagram de La Casa del Kumis" /></a>
+          <a href="https://tiktok.com/@lacasadelkumis" target="_blank"><img src="images/tiktok.svg" alt="TikTok de La Casa del Kumis" /></a>
         </div>
       </div>
     </div>
   </section>
   
   <footer class="footer-elegante">
-     <p>
-    <a href="politica-datos.html" class="credit-link">Política de Tratamiento de Datos</a> |
-    <a href="terminos-condiciones.html" class="credit-link">Términos y Condiciones</a>
-  </p>
-  <p>&copy; 2025 <strong>Casa del Kumis</strong>. Todos los derechos reservados.</p>
-  <p>
-    Desarrollado con <span class="corazon">❤</span> por 
-    <a href="https://github.com/otpvayne" target="_blank" class="credit-link">Diego</a>.
-  </p>
-</footer>
+    <p>
+      <a href="politica-datos.html" class="credit-link">Política de Tratamiento de Datos</a> |
+      <a href="terminos-condiciones.html" class="credit-link">Términos y Condiciones</a>
+    </p>
+    <p>&copy; 2025 <strong>La Casa del Kumis</strong>. Todos los derechos reservados.</p>
+    <p>
+      Desarrollado con <span class="corazon">❤</span> por 
+      <a href="https://github.com/otpvayne" target="_blank" class="credit-link">Diego</a>.
+    </p>
+  </footer>
+
   <script defer src="scripts/script.js"></script>
 </body>
 </html>
