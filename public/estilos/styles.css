@@ -404,7 +404,7 @@ textarea:focus {
 .cards-info-carrusel {
   display: flex;
   overflow-x: auto;
-  gap: 1.5rem;
+  gap: 1rem;
   scroll-snap-type: x mandatory;
   padding: 2rem 0;
   -webkit-overflow-scrolling: touch;
@@ -412,7 +412,7 @@ textarea:focus {
 }
 
 .cards-info-carrusel .card {
-  flex: 0 0 auto; /* Asegura que las tarjetas tengan un ancho automático */
+  flex: 0 0 0%; /* Asegura que las tarjetas tengan un ancho automático */
   min-width: 280px; /* Evita que las tarjetas sean demasiado pequeñas */
   max-width: 340px; /* Controla el tamaño máximo de las tarjetas */
   margin: auto;
