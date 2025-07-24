@@ -400,6 +400,7 @@ textarea:focus {
   z-index: 1;
 }
 /* Cards horizontal en móviles */
+/* Carrusel Horizontal */
 .cards-info-carrusel {
   display: flex;
   overflow-x: auto;
@@ -407,19 +408,22 @@ textarea:focus {
   scroll-snap-type: x mandatory;
   padding: 2rem 0;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth; /* Habilita el desplazamiento suave */
 }
 
 .cards-info-carrusel .card {
-  flex: 0 0 85%;
-  scroll-snap-align: start;
-  min-width: 280px;
-  max-width: 340px;
+  flex: 0 0 auto; /* Asegura que las tarjetas tengan un ancho automático */
+  min-width: 280px; /* Evita que las tarjetas sean demasiado pequeñas */
+  max-width: 340px; /* Controla el tamaño máximo de las tarjetas */
   margin: auto;
   background: white;
   border-radius: 1.5rem;
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   padding: 2rem;
   transition: transform 0.3s ease;
+  scroll-snap-align: start; /* Alineación del carrusel */
+  flex-shrink: 0; /* Impide que las tarjetas se encojan */
+  overflow: hidden; /* Evita el desbordamiento del contenido */
 }
 
 .cards-info-carrusel .card:hover {
@@ -468,6 +472,30 @@ textarea:focus {
   display: none;
 }
 
+/* Indicadores de Desplazamiento */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px; /* Ubica los indicadores en la parte inferior */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-indicators .indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s;
+}
+
+.carousel-indicators .indicator.active {
+  background-color: var(--color-principal);
+}
+
 /* Escritorio: rejilla como antes */
 @media (min-width: 768px) {
   .cards-info-carrusel {
@@ -477,10 +505,11 @@ textarea:focus {
   }
 
   .cards-info-carrusel .card {
-    flex: 0 0 calc(45% - 2rem);
+    flex: 0 0 calc(45% - 2rem); /* Mejora el tamaño para pantallas grandes */
     max-width: 500px;
   }
 }
+
 
 /* Tarjeta refinada */
 .card {
