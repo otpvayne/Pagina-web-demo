@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://pagina-web-demo.onrender.com/sitemap.xml
