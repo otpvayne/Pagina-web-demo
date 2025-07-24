@@ -30,8 +30,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 
-
 <body>
+  <!-- Añadir h1 oculto visualmente para SEO -->
+  <h1 class="sr-only">Política de Tratamiento de Datos | La Casa del Kumis</h1>
+
   <header class="sticky-header">
     <nav class="header-nav">
       <a href="index.html" class="logo">
@@ -50,7 +52,7 @@
 
   <main class="container">
     <a href="index.html"><button>⬅ Volver</button></a>
-    <h1 class="titulo-central" style="margin-bottom: 1.5rem;">Política de Tratamiento de Datos</h1>
+    <h2 class="titulo-central" style="margin-bottom: 1.5rem;">Política de Tratamiento de Datos</h2>
 
     <div class="descripcion" style="text-align: left; margin-bottom: 2rem;">
       <p><strong>Fecha de actualización:</strong> 14 de julio de 2025</p>
@@ -62,7 +64,7 @@
       <p>Recolectamos datos como nombre, correo, teléfono, ciudad, mensajes enviados y datos de navegación (cookies, IP, navegador).</p>
 
       <h2>2. Finalidad del tratamiento</h2>
-      <p>Utilizamos sus datos para contactarlo, responder formularios, enviar información de interés y cumplir con obligaciones legales.</p>
+      <p>Utilizamos sus datos para contactarlo, responder formularios, enviar información de interés y cumplir con obligaciones legales. Si deseas saber más sobre nuestros <a href="productos.html">productos</a> y <a href="sucursales.html">sucursales</a>, visita las secciones correspondientes.</p>
 
       <h2>3. Sus derechos como titular</h2>
       <ul>
@@ -124,5 +126,23 @@
   </footer>
 
   <script defer src="scripts/script.js"></script>
+
+  <!-- Schema.org Markup for LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "La Casa del Kumis",
+    "image": "https://pagina-web-demo.onrender.com/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 37 #31A-10",
+      "addressLocality": "Villavicencio",
+      "addressCountry": "CO"
+    },
+    "url": "https://pagina-web-demo.onrender.com",
+    "telephone": "+573174075190"
+  }
+  </script>
 </body>
 </html>

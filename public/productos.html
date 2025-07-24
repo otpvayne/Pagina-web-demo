@@ -31,6 +31,8 @@
 
 
 <body>
+  <h1 class="sr-only">Productos de Kumis Artesanal | La Casa del Kumis</h1>
+
   <header class="sticky-header">
     <nav class="header-nav">
       <a href="index.html" class="logo">
@@ -128,5 +130,22 @@
   </footer>
 
   <script defer src="scripts/script.js"></script>
+    <!-- Añadir el Schema JSON-LD aquí -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "La Casa del Kumis",
+      "image": "https://pagina-web-demo.onrender.com/images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 37 #31A-10",
+        "addressLocality": "Villavicencio",
+        "addressCountry": "CO"
+      },
+      "url": "https://pagina-web-demo.onrender.com",
+      "telephone": "+573174075190"
+    }
+  </script>
 </body>
 </html>

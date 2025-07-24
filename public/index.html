@@ -30,7 +30,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 
-
 <body>
   <header class="sticky-header">
     <nav class="header-nav">
@@ -49,8 +48,12 @@
       </ul>
     </nav>
   </header>
-  
+
+  <!-- Aquí agregamos el <h1> con la palabra clave principal -->
   <main id="inicio">
+    <h1 class="sr-only">La Casa del Kumis | Kumis Artesanal y Natural en Colombia</h1>
+
+
     <!-- Carrusel principal -->
     <div class="carousel">
       <div class="slides">
@@ -98,7 +101,7 @@
       </div>
     </div>
   </section>
-  
+
   <footer class="footer-elegante">
     <p>
       <a href="politica-datos.html" class="credit-link">Política de Tratamiento de Datos</a> |
@@ -112,5 +115,24 @@
   </footer>
 
   <script defer src="scripts/script.js"></script>
+  
+  <!-- Aquí agregamos el marcado semántico de schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "La Casa del Kumis",
+    "image": "https://pagina-web-demo.onrender.com/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 37 #31A-10",
+      "addressLocality": "Villavicencio",
+      "addressCountry": "CO"
+    },
+    "url": "https://pagina-web-demo.onrender.com",
+    "telephone": "+573174075190"
+  }
+  </script>
+
 </body>
 </html>

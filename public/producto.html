@@ -241,6 +241,8 @@ main a button:hover {
   </style>
 </head>
 <body>
+  <h1 class="sr-only">Detalle del Producto | La Casa del Kumis</h1>
+
   <!-- MENÚ FIJO SUPERIOR -->
   <header class="sticky-header">
     <nav class="header-nav">
@@ -455,5 +457,22 @@ main a button:hover {
     <a href="https://github.com/otpvayne" target="_blank" class="credit-link">Diego</a>.
   </p>
 </footer>
+<!-- Añadir el Schema JSON-LD aquí -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "La Casa del Kumis",
+      "image": "https://pagina-web-demo.onrender.com/images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 37 #31A-10",
+        "addressLocality": "Villavicencio",
+        "addressCountry": "CO"
+      },
+      "url": "https://pagina-web-demo.onrender.com",
+      "telephone": "+573174075190"
+    }
+  </script>
 </body>
 </html>
