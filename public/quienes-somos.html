@@ -139,6 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
     updateIndicators(activeIndex);
   });
 });
+ document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      console.log('clic');
+    });
+  } else {
+    console.log('no se encontró el botón o el menú');
+  }
+});
 </script>
  <section class="contacto-ayuda">
     <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
