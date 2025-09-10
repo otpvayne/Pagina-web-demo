@@ -37,7 +37,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     .detalle-container{max-width:1100px;margin:auto;padding:2rem;background:#fff;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.05)}
-    .hero-img{width:100%;height:320px;object-fit:cover;border-radius:16px}
+    /* Reemplaza tu .hero-img actual */
+.hero-img {
+  width: 100%;
+  height: auto;              /* que se adapte a la proporción original */
+  max-height: 70vh;          /* límite para que no sea infinita en pantallas grandes */
+  object-fit: contain;       /* mostrar toda la imagen completa */
+  object-position: center;   /* centrada */
+  border-radius: 16px;
+  display: block;
+  background: #fff;   
+  border-radius: 30px;        /* fondo blanco si sobran franjas */
+}
+
+/* Añade esta variante y usa class="hero-img hero-img--contain" en el <img> */
+.hero-img--contain{
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+
     .detalle-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;margin-top:1.2rem}
     @media (max-width:900px){.detalle-grid{grid-template-columns:1fr}}
     .card{background:#fafafa;border-radius:16px;padding:1rem;border:1px solid #eee}
@@ -85,7 +106,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="detalle-grid">
       <div class="card">
         <h2>Mapa</h2>
-        <iframe id="iframeMapa" class="mapa" loading="lazy"></iframe>
+<p id="sinMapa" style="display:none;opacity:.7;">Mapa embebido no disponible para esta sucursal. Usa los botones para abrir en Google Maps.</p>
+<iframe id="iframeMapa" class="mapa" loading="lazy"></iframe>
+
       </div>
       <div class="card">
         <h2>Horario</h2>
@@ -114,7 +137,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     // Para fotos: coloca imágenes en images/sucursales/<slug>.jpg
     const S = (slug, nombre, ciudad, direccion, mapsEmbed) => ({
       slug, nombre, ciudad, direccion,
-      foto: `images/sucursales/${slug}.jpg`,
+      foto: `images/sucursales/${slug}.webp`,
       mapsEmbed: mapsEmbed || "",
       mapsLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nombre + " " + direccion)}`
     });
@@ -338,6 +361,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       const horarios = pintarHorarios(data.ciudad, null);
       ponerEstado(horarios);
     }
+    document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      console.log('clic');
+    });
+  } else {
+    console.log('no se encontró el botón o el menú');
+  }
+});
   </script>
 <section class="contacto-ayuda">
     <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
