@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PDGN9NV6');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Básico -->
+  <meta name="description" content="La Casa del Kumis es la marca de kumis artesanal más tradicional de Colombia, con presencia en Bogotá, Villavicencio y Bucaramanga. Descubre nuestros productos naturales, frescos y deliciosos." />
+  <meta name="keywords" content="La Casa del Kumis, Casa del Kumis, kumis artesanal, kumis natural, kumis Bogotá, kumis Villavicencio, kumis Bucaramanga, productos lácteos Colombia" />
+  <meta name="author" content="Casa del Kumis" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pagina-web-demo.onrender.com/" />
+
+  <!-- Open Graph (Facebook, WhatsApp) -->
+  <meta property="og:title" content="La Casa del Kumis | Kumis Artesanal y Natural en Colombia" />
+  <meta property="og:description" content="Más de 70 años llevando kumis auténtico a tu mesa. Visítanos en Bogotá, Villavicencio y Bucaramanga." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pagina-web-demo.onrender.com/" />
+  <meta property="og:image" content="https://pagina-web-demo.onrender.com/images/logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="La Casa del Kumis | Kumis Artesanal y Natural en Colombia" />
+  <meta name="twitter:description" content="Más de 70 años de sabor, tradición y calidad. Visítanos en Bogotá, Villavicencio y Bucaramanga." />
+  <meta name="twitter:image" content="https://pagina-web-demo.onrender.com/images/logo.png" />
+
+  <title>La Casa del Kumis | Kumis Artesanal y Natural en Colombia</title>
+
+  <link rel="stylesheet" href="estilos/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .detalle-container{max-width:1100px;margin:auto;padding:2rem;background:#fff;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.05)}
+    .hero-img{width:100%;height:320px;object-fit:cover;border-radius:16px}
+    .detalle-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;margin-top:1.2rem}
+    @media (max-width:900px){.detalle-grid{grid-template-columns:1fr}}
+    .card{background:#fafafa;border-radius:16px;padding:1rem;border:1px solid #eee}
+    .cta-row{display:flex;gap:.75rem;flex-wrap:wrap;margin:.75rem 0}
+    .btn{display:inline-block;background:#d51f27;color:#fff;border:none;border-radius:10px;padding:.6rem 1rem;font-weight:700;text-decoration:none}
+    .estado{display:inline-flex;gap:.5rem;align-items:center;font-weight:700;border-radius:999px;padding:.2rem .6rem}
+    .estado.abierto{background:#4caf50;color:#fff}
+    .estado.cerrado{background:#f44336;color:#fff}
+    iframe.mapa{width:100%;height:360px;border:0;border-radius:16px}
+    table.horarios{width:100%;border-collapse:collapse}
+    .horarios th,.horarios td{padding:.5rem;border-bottom:1px solid #eee;text-align:left}
+  </style>
+</head>
+
+<body>
+  <header class="sticky-header">
+    <nav class="header-nav">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Logo de La Casa del Kumis" style="height: 80px;" />
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="menu">
+        <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sucursales.html">Sucursales</a></li>
+      </ul>
+    </nav>
+  </header>
+<main class="detalle-container">
+    <a class="btn" href="sucursales.html">⬅ Volver a sucursales</a>
+    <h1 id="titulo"></h1>
+    <p id="direccion"></p>
+    <div class="cta-row">
+      <span id="estado" class="estado"></span>
+      <a id="btnMaps" target="_blank" rel="noopener" class="btn">Abrir en Google Maps</a>
+      <a id="btnNavegar" class="btn" target="_blank" rel="noopener">¿Cómo llegar?</a>
+    </div>
+
+    <img id="foto" class="hero-img" alt="Foto de la sucursal"/>
+
+    <div class="detalle-grid">
+      <div class="card">
+        <h2>Mapa</h2>
+        <iframe id="iframeMapa" class="mapa" loading="lazy"></iframe>
+      </div>
+      <div class="card">
+        <h2>Horario</h2>
+        <table class="horarios" id="tablaHorarios"></table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ========= 1) Horarios por ciudad (default) =========
+    // 0=Dom, 1=Lun, ... 6=Sáb
+    const HORARIOS_CIUDAD = {
+      bogota: {
+        1:["08:00","19:00"], 2:["08:00","18:00"], 3:["08:00","18:00"], 4:["08:00","18:00"], 5:["08:00","18:00"], 6:["08:00","14:00"]
+        // Domingo sin horario => Cerrado
+      },
+      villavicencio: {
+        0:["09:00","17:00"], 1:["09:00","17:00"], 2:["09:00","17:00"], 3:["09:00","17:00"], 4:["09:00","17:00"], 5:["09:00","17:00"], 6:["09:00","14:00"]
+      },
+      bucaramanga: {
+        1:["08:00","18:00"], 2:["08:00","18:00"], 3:["08:00","18:00"], 4:["08:00","18:00"], 5:["08:00","18:00"], 6:["08:00","14:00"]
+      }
+    };
+
+    // ========= 2) Catálogo completo de sucursales (según tu lista) =========
+    // Para fotos: coloca imágenes en images/sucursales/<slug>.jpg
+    const S = (slug, nombre, ciudad, direccion, mapsEmbed) => ({
+      slug, nombre, ciudad, direccion,
+      foto: `images/sucursales/${slug}.jpg`,
+      mapsEmbed: mapsEmbed || "",
+      mapsLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nombre + " " + direccion)}`
+    });
+
+    const SUCURSALES = {
+      "villavicencio-principal": S(
+        "villavicencio-principal",
+        "CASA DEL KUMIS PRINCIPAL",
+        "villavicencio",
+        "Calle 37 N 31 A 10 - Centro, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d248.70956943578244!2d-73.63694253079545!3d4.15078277010877!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2de5f9438fd5%3A0xf2ad1874645bd0f5!2sCASA%20DEL%20KUMIS!5e0!3m2!1ses-419!2sco!4v1752090595631!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-38": S(
+        "villavicencio-38",
+        "CASA DEL KUMIS DE LA 38",
+        "villavicencio",
+        "Calle 38 N 30 - 36 - Centro, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4181239883526!2d-73.63608995349695!3d4.152393282404039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2de8caf24ac3%3A0xdbd0e47474db1869!2sCl.%2038%20%23%2030-36%2C%20Villavicencio%2C%20Meta!5e0!3m2!1ses-419!2sco!4v1752090261810!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-centauros": S(
+        "villavicencio-centauros",
+        "CASA DEL KUMIS CENTAUROS",
+        "villavicencio",
+        "Calle 38 N 32-47 - Centro, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.41894988898633!2d-73.63849403999308!3d4.151082712728666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2de588723299%3A0x32191c0ffc250dd5!2sCl.%2038%20%23%2032-47%2C%20Villavicencio%2C%20Meta!5e0!3m2!1ses-419!2sco!4v1752090434818!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-barzal": S(
+        "villavicencio-barzal",
+        "CASA DEL KUMIS BARZAL",
+        "villavicencio",
+        "Calle 35 N 36-25 - Barzal, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4216649094836!2d-73.63925304832506!3d4.146771504023469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2d820580ad1d%3A0x8c34110578311e20!2sCASA%20DEL%20KUMIS%20BARZAL!5e0!3m2!1ses-419!2sco!4v1752090541479!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-unicentro": S(
+        "villavicencio-unicentro",
+        "CASA DEL KUMIS UNICENTRO",
+        "villavicencio",
+        "Centro Comercial Unicentro LOCAL 235, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.42489373694326!2d-73.63458553621575!3d4.14163858421834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2de1c57c9fbd%3A0x89834383dcf848ce!2sCentro%20Comercial%20Unicentro%20Villavicencio!5e0!3m2!1ses-419!2sco!4v1752090819260!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-primavera": S(
+        "villavicencio-primavera",
+        "CASA DEL KUMIS PRIMAVERA",
+        "villavicencio",
+        "Calle 15 N 40-101 - Villa María, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.43078065626185!2d-73.63244483814884!3d4.132263671247237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2e0d6e6365cd%3A0x7f5ea7789b90f1f9!2sCl.%2015%20%2340-101%2C%20Villavicencio%2C%20Meta!5e0!3m2!1ses-419!2sco!4v1752090954639!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-homecenter": S(
+        "villavicencio-homecenter",
+        "CASA DEL KUMIS HOMECENTER",
+        "villavicencio",
+        "Cra 48 N 1-180 KM 2 - Vía Acacías, Villavicencio",
+        "" // sin embed en tu HTML original
+      ),
+      "villavicencio-hospital": S(
+        "villavicencio-hospital",
+        "CASA DEL KUMIS - HOSPITAL",
+        "villavicencio",
+        "Calle 44B N 33B-127 - Local 3, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.42321914831786!2d-73.64383896189692!3d4.144301497319411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2dfce7acf291%3A0xec03138c30b947db!2sCasa%20del%20Kumis!5e0!3m2!1ses-419!2sco!4v1752091240132!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-unico": S(
+        "villavicencio-unico",
+        "CASA DEL KUMIS UNICO",
+        "villavicencio",
+        "K 22 8-21 - Local 8 CC Único, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.8661341612678!2d-73.62467946905424!3d4.128616813180363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2e6e64444089%3A0x8e0925002a551fec!2sCentro%20Comercial%20UNICO%20Outlet%20Villavicencio!5e0!3m2!1ses-419!2sco!4v1752091303042!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-viva": S(
+        "villavicencio-viva",
+        "CASA DEL KUMIS VIVA",
+        "villavicencio",
+        "Calle 40 N 30-26 Piso 1 Local 1042, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1989.7402745425914!2d-73.63955398207624!3d4.125421681379411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2f27e8641e49%3A0x3593729f14445dec!2sViva%20Centro%20Comercial!5e0!3m2!1ses-419!2sco!4v1752091407011!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-makro": S(
+        "villavicencio-makro",
+        "CASA DEL KUMIS MAKRO",
+        "villavicencio",
+        "Cra 22 N 7-37 - Vía Pto López, Villavicencio",
+        "" // sin embed
+      ),
+      "villavicencio-makro-balata": S(
+        "villavicencio-makro-balata",
+        "CASA DEL KUMIS MAKRO",
+        "villavicencio",
+        "Av 40 N 16B-159 - Balatá, Villavicencio",
+        "" // sin embed
+      ),
+      "bogota-castellana": S(
+        "bogota-castellana",
+        "CASA DEL KUMIS LA CASTELLANA",
+        "bogota",
+        "Calle 95 N 45A-30 - La Castellana, Bogotá",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.06171108553565!2d-74.05927404366584!3d4.68392159466781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b8b2e13ab9f%3A0x640c022a3532bac0!2sCasa%20del%20Kumis!5e0!3m2!1ses-419!2sco!4v1752091576844!5m2!1ses-419!2sco"
+      ),
+      "bogota-nuestro-bogota": S(
+        "bogota-nuestro-bogota",
+        "CASA DEL KUMIS NUESTRO BOGOTÁ",
+        "bogota",
+        "CC Nuestro Bogotá Local B1-131-133, Bogotá",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.5003338748825!2d-74.12019161824517!3d4.682752827834396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b0046aa4a91%3A0xb61c6018cb703230!2sCasa%20del%20Kumis!5e0!3m2!1ses-419!2sco!4v1752091613043!5m2!1ses-419!2sco"
+      ),
+      "bucaramanga-unico": S(
+        "bucaramanga-unico",
+        "CASA DEL KUMIS ÚNICO BUCARAMANGA",
+        "bucaramanga",
+        "CC Único Bucaramanga Local 142, Bucaramanga",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.1653338687842!2d-74.81288301147349!3d10.988914902049272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef42d0e6b21ba49%3A0x425b4a093600da3f!2sCentro%20Comercial%20%C3%9Anico%20Outlet!5e0!3m2!1ses-419!2sco!4v1752091669423!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-plazoleta": S(
+        "villavicencio-plazoleta",
+        "CASA DEL KUMIS PLAZOLETA",
+        "villavicencio",
+        "Av 40 N 26C-10 - CC Unicentro, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.42435532023944!2d-73.63456138539293!3d4.142494955146459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2de1befeed73%3A0x6cc4e9f5f114ad34!2sAv.%2040%20%2326C%2010%2C%20Villavicencio%2C%20Meta!5e0!3m2!1ses-419!2sco!4v1752091702392!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-barzal2": S(
+        "villavicencio-barzal2",
+        "Local Barzal 2",
+        "villavicencio",
+        "Cra 38 N 33B-27 - Barzal Alto, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.4227548864492!2d-73.63920695936459!3d4.1450394592670685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2de37534cb17%3A0x3de0e6c01a831891!2sCra.%2038%20%2333b-27%2C%20Villavicencio%2C%20Meta!5e0!3m2!1ses-419!2sco!4v1752091753740!5m2!1ses-419!2sco"
+      ),
+      "villavicencio-kumis-movil": S(
+        "villavicencio-kumis-movil",
+        "Kumis Móvil",
+        "villavicencio",
+        "Parque Los Fundadores, Villavicencio",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1989.7478196157092!2d-73.64428371345127!3d4.122408321985377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3e2e181b2fb6e7%3A0x9bb5f86256585c44!2sParque%20Los%20Fundadores!5e0!3m2!1ses-419!2sco!4v1752091800510!5m2!1ses-419!2sco"
+      )
+    };
+
+    // ========= 3) Render =========
+    const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    const qs = new URLSearchParams(location.search);
+    const slug = qs.get("slug");
+    const data = SUCURSALES[slug];
+
+    const byId = (id) => document.getElementById(id);
+
+    function pintarHorarios(ciudad, custom=null){
+      const base = custom || HORARIOS_CIUDAD[ciudad] || {};
+      const tbl = byId("tablaHorarios");
+      tbl.innerHTML = "<thead><tr><th>Día</th><th>Horario</th></tr></thead><tbody></tbody>";
+      const tb = tbl.querySelector("tbody");
+      for (let i=0;i<7;i++){
+        const rango = base[i];
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${dias[i]}</td><td>${rango ? (rango[0] + " - " + rango[1]) : "Cerrado"}</td>`;
+        tb.appendChild(tr);
+      }
+      return base;
+    }
+
+    function ponerEstado(horarios){
+      const ahora = new Date();
+      const d = ahora.getDay();
+      const h = ahora.getHours() + ahora.getMinutes()/60;
+      const estadoEl = byId("estado");
+      const r = horarios[d];
+      if (r){
+        const parse = t => { const [hh,mm="0"] = t.split(":"); return parseInt(hh)+parseInt(mm)/60; };
+        const abierto = h >= parse(r[0]) && h < parse(r[1]);
+        estadoEl.textContent = abierto ? "Abierto ahora" : "Cerrado";
+        estadoEl.classList.add(abierto ? "abierto" : "cerrado");
+      } else {
+        estadoEl.textContent = "Cerrado";
+        estadoEl.classList.add("cerrado");
+      }
+    }
+
+    if (!data){
+      document.body.innerHTML = `
+      <header class="sticky-header">
+    <nav class="header-nav">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Logo de La Casa del Kumis" style="height: 80px;" />
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="menu">
+        <li><a href="quienes-somos.html">¿Quiénes Somos?</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="sucursales.html">Sucursales</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+        <main class="wrap"><div class="panel">
+          <a class="btn" href="sucursales.html">⬅ Volver</a>
+          <h1>Sucursal no encontrada</h1>
+          <p>Verifica el enlace o el slug en la URL.</p>
+        </div></main>`;
+    } else {
+      byId("titulo").textContent = `${data.nombre} (${data.ciudad.charAt(0).toUpperCase()+data.ciudad.slice(1)})`;
+      byId("direccion").textContent = "Dirección: " + data.direccion;
+      byId("foto").src = data.foto;
+      byId("foto").alt = "Foto de " + data.nombre;
+
+      // Botones de Google Maps
+      byId("btnMaps").href = data.mapsLink;
+      byId("btnNavegar").href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(data.direccion);
+
+      // Mapa embebido (si no hay, se oculta el iframe)
+      const iframe = byId("iframeMapa");
+      const sinMapa = byId("sinMapa");
+      if (data.mapsEmbed){
+        iframe.src = data.mapsEmbed;
+        iframe.style.display = "block";
+        sinMapa.style.display = "none";
+      } else {
+        iframe.style.display = "none";
+        sinMapa.style.display = "block";
+      }
+
+      // Horarios: usa los por ciudad (puedes personalizar por sucursal si lo necesitas)
+      const horarios = pintarHorarios(data.ciudad, null);
+      ponerEstado(horarios);
+    }
+  </script>
+<section class="contacto-ayuda">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+      <img src="images/logo.png" alt="Logo La Casa del Kumis" class="logo-contacto" />
+      <div style="flex: 1; min-width: 250px;">
+        <h2>Contáctanos</h2>
+        <p><strong>Dirección:</strong> Calle 37 #31A-10, Villavicencio</p>
+        <p><strong>Teléfonos:</strong> 6661352 - 3174075190</p>
+        <p><strong>Ciudades:</strong> Bogotá, Villavicencio y Bucaramanga</p>
+        <p><strong>Email:</strong> casadelkumis1950@hotmail.com</p>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h2>Ayuda</h2>
+        <a href="trabaja.html"><button>Trabaja con nosotros</button></a>
+        <a href="quejas.html"><button>Escribe tu queja o reclamo</button></a>
+        
+        <h2>Síguenos</h2>
+        <div class="social">
+          <a href="https://www.facebook.com/share/16qBEZQYRq/?mibextid=wwXIfr" target="_blank"><img src="images/facebook.svg" alt="Facebook de La Casa del Kumis" /></a>
+          <a href="https://www.instagram.com/casadelkumis?igsh=YWVtN2hxbzhuOWww&utm_source=qr" target="_blank"><img src="images/instagram.svg" alt="Instagram de La Casa del Kumis" /></a>
+          <a href="https://linktr.ee/casadelkumis?utm_source=linktree_profile_share" target="_blank"><img src="images/linktree.webp" alt="TikTok de La Casa del Kumis" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-elegante">
+    <p>
+      <a href="politica-datos.html" class="credit-link">Política de Tratamiento de Datos</a> |
+      <a href="terminos-condiciones.html" class="credit-link">Términos y Condiciones</a>
+    </p>
+    <p>&copy; 2025 <strong>Casa del Kumis</strong>. Todos los derechos reservados.</p>
+    <p>
+      Desarrollado con <span class="corazon">❤</span> por 
+      <a href="https://github.com/otpvayne" target="_blank" class="credit-link">Diego</a>.
+    </p>
+  </footer>
