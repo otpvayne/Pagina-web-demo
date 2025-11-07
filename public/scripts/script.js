@@ -137,13 +137,21 @@ setInterval(() => {
     { id: "Avena" , nombre: "Avena", img: "images/productos/Avena.webp", desc: "Perfecto para quienes cuidan su dieta.", categorias: [] },
     { id: "Capuccino" , nombre: "Capuccino", img: "images/productos/Capuccino.webp", desc: "Refrescante y tropical.", categorias: ["favorito"] },
     { id: "Chococono" , nombre: "Chococono", img: "images/productos/Choco_Cono.webp", desc: "", categorias: [] },
-    { id: "Chocokumis" , nombre: "Chocokumis", img: "images/productos/ChocoKumis.webp", desc: "Ácido y dulce, para paladares intensos.", categorias: [] },
+    { id: "Chocokumis" , nombre: "Chocokumis", img: "images/productos/ChocoKumis.webp", desc: "Ácido y dulce, para paladares intensos.", categorias: ["mas-vendido"] },
     { id: "Citrica" , nombre: "Cítrica", img: "images/productos/Citrica.webp", desc: "", categorias: ["mas-vendido"] },
     { id: "Empanadadecarne" , nombre: "Empanada de carne", img: "images/productos/Empanadadecarne.webp", desc: "", categorias: ["mas-vendido"] },
     { id: "Empanadadepollo" , nombre: "Empanada de pollo", img: "images/productos/Empanadadepollo.webp", desc: "El sabor colombiano por excelencia.", categorias: ["mas-vendido"] },
-    { id: "Empanadallanera" , nombre: "Empanada llanera", img: "images/productos/Empanadallanera.webp", desc: "", categorias: ["favorito"] },
+    { id: "Empanadallanera" , nombre: "Empanada llanera", img: "images/productos/Empanadallanera.webp", desc: "", categorias: [""] },
     { id: "Galletadeavena" , nombre: "Galleta de avena", img: "images/productos/Galletadeavena.webp", desc: "Tradicional y lleno de energía natural.", categorias: [] },
-    { id: "KumisCono" , nombre: "Kumis Cono", img: "images/productos/KumisCono.webp", desc: "Tradicional y lleno de energía natural.", categorias: [] }
+    { id: "KumisCono" , nombre: "Kumis Cono", img: "images/productos/KumisCono.webp", desc: "", categorias: ["favorito"] },
+    { id: "Mantecada" , nombre: "Mantecada", img: "images/productos/Mantecada.webp", desc: "", categorias: [] },
+    { id: "Pandebono" , nombre: "Pandebono", img: "images/productos/Pandebono.webp", desc: "", categorias: [] },
+    { id: "TintoAmericano" , nombre: "Tinto Americano", img: "images/productos/TintoAmericano.webp", desc: "Tradicional y lleno de energía natural.", categorias: ["favorito"] },
+    { id: "Tortadechocolate" , nombre: "Torta de chocolate", img: "images/productos/Tortadechocolate.webp", desc: "", categorias: [] },
+    { id: "Tortadecuajada" , nombre: "Torta de cuajada", img: "images/productos/Tortadecuajada.webp", desc: "", categorias: [] },
+    { id: "Tortadepan" , nombre: "Torta de pan", img: "images/productos/Tortadepan.webp", desc: "", categorias: [] },
+    { id: "Yogurt" , nombre: "Yogurt", img: "images/productos/Yogurt.webp", desc: "", categorias: ["favorito"] }
+    
   ];
 
   const container = document.getElementById("productos-container");
