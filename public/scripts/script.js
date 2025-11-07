@@ -128,7 +128,7 @@ setInterval(() => {
   });
   // Productos dinámicos
   const productosData = [
-    { id: "fresa",nombre: "Kumis con Fresa", img: "images/kumis-fresa.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
+    { id: "Granizado",nombre: "Granizado de cafe", img: "images/Granizado de cafe.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
     { id: "Tradicional",nombre: "Kumis Tradicional", img: "images/kumis-tradicional.jpg", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
     { id: "Durazno" , nombre: "Kumis con Durazno", img: "images/kumis1.png", desc: "Dulce natural con un toque de durazno maduro.", categorias: ["mas-vendido"] },
     { id: "Mango" , nombre: "Kumis con Mango", img: "images/kumis-mango.jpg", desc: "Sabroso y tropical, ideal para días soleados.", categorias: ["mas-vendido"] },
