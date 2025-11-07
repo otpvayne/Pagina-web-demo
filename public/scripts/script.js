@@ -129,7 +129,7 @@ setInterval(() => {
   // Productos dinámicos
   const productosData = [
     { id: "Granizado",nombre: "Granizado de cafe", img: "images/Granizado de cafe.jpg", desc: "Con trozos naturales de fresa. Dulce y refrescante.", categorias: ["favorito"] },
-    { id: "Kumis",nombre: "Kumis", img: "/images/productos/kumis1.png", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
+    { id: "Kumis",nombre: "Kumis", img: "images/productos/kumis1.png", desc: "Auténtico y cremoso, el favorito de siempre.", categorias: ["mas-vendido"] },
     { id: "Affogato" , nombre: "Affogato", img: "images/productos/Affogato.webp", desc: "", categorias: ["mas-vendido"] },
     { id: "Agua" , nombre: "Agua en botella", img: "images/productos/Aguaenbotella.webp", desc: "", categorias: ["mas-vendido"] },
     { id: "Light" , nombre: "Kumis Light", img: "images/kumis-natural-light.jpg", desc: "Bajo en grasa, pero igual de delicioso.", categorias: ["mas-vendido"] },
