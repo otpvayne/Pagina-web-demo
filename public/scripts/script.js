@@ -136,13 +136,14 @@ setInterval(() => {
     { id: "Aromatica" , nombre: "Aromatica", img: "images/productos/Aromatica.webp", desc: "Una explosión de sabor.", categorias: ["mas-vendido"] },
     { id: "Avena" , nombre: "Avena", img: "images/productos/Avena.webp", desc: "Perfecto para quienes cuidan su dieta.", categorias: [] },
     { id: "Capuccino" , nombre: "Capuccino", img: "images/productos/Capuccino.webp", desc: "Refrescante y tropical.", categorias: ["favorito"] },
-    { id: "Maracuya" , nombre: "Kumis con Maracuyá", img: "images/kumis-maracuya.jpg", desc: "Ácido y dulce, para paladares intensos.", categorias: [] },
-    { id: "Clasico" , nombre: "Kumis Clásico", img: "images/kumis-clasico.jpg", desc: "Elaborado artesanalmente con leche fresca.", categorias: [] },
-    { id: "Coco" , nombre: "Kumis con Coco", img: "images/kumis-coco.jpg", desc: "Cremoso y exótico, como el Caribe.", categorias: ["mas-vendido"] },
-    { id: "Banana" , nombre: "Kumis con Banana", img: "images/kumis-banana.jpg", desc: "Suave, dulce y muy nutritivo.", categorias: ["mas-vendido"] },
-    { id: "Guayaba" , nombre: "Kumis con Guayaba", img: "images/kumis-guayaba.jpg", desc: "El sabor colombiano por excelencia.", categorias: ["mas-vendido"] },
-    { id: "Griego" , nombre: "Kumis estilo Griego", img: "images/kumis-griego.jpg", desc: "Más espeso y proteico, ideal para desayunos.", categorias: ["favorito"] },
-    { id: "Avena" , nombre: "Kumis con Avena", img: "images/kumis-avena.jpg", desc: "Tradicional y lleno de energía natural.", categorias: [] }
+    { id: "Chococono" , nombre: "Chococono", img: "images/productos/Choco_Cono.webp", desc: "", categorias: [] },
+    { id: "Chocokumis" , nombre: "Chocokumis", img: "images/productos/ChocoKumis.webp", desc: "Ácido y dulce, para paladares intensos.", categorias: [] },
+    { id: "Citrica" , nombre: "Cítrica", img: "images/productos/Citrica.webp", desc: "", categorias: ["mas-vendido"] },
+    { id: "Empanadadecarne" , nombre: "Empanada de carne", img: "images/productos/Empanadadecarne.webp", desc: "", categorias: ["mas-vendido"] },
+    { id: "Empanadadepollo" , nombre: "Empanada de pollo", img: "images/productos/Empanadadepollo.webp", desc: "El sabor colombiano por excelencia.", categorias: ["mas-vendido"] },
+    { id: "Empanadallanera" , nombre: "Empanada llanera", img: "images/productos/Empanadallanera.webp", desc: "", categorias: ["favorito"] },
+    { id: "Galletadeavena" , nombre: "Galleta de avena", img: "images/productos/Galletadeavena.webp", desc: "Tradicional y lleno de energía natural.", categorias: [] },
+    { id: "KumisCono" , nombre: "Kumis Cono", img: "images/productos/KumisCono.webp", desc: "Tradicional y lleno de energía natural.", categorias: [] }
   ];
 
   const container = document.getElementById("productos-container");
