@@ -1106,3 +1106,63 @@ textarea:focus {
 .aceptacion-politicas a:hover {
   color: var(--color-principal);
 }
+/* === AJUSTE VISUAL DEL CARRUSEL DE PRODUCTOS === */
+.product-carousel-track {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch; /* Alinea todas las tarjetas a la misma altura */
+}
+
+.product-slide {
+  flex: 0 0 220px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.product-slide:hover {
+  transform: translateY(-4px);
+}
+
+.product-slide img {
+  width: 100%;
+  height: 180px;               /* Tamaño visual uniforme */
+  object-fit: cover;           /* Recorta sin deformar */
+  object-position: center;     /* Centra el foco */
+  border-bottom: 3px solid var(--color-principal);
+  display: block;
+}
+
+/* Imagenes con mucho fondo blanco (como el cono) */
+.product-slide img.is-cutout {
+  object-fit: contain;
+  background: #fff;
+  padding: 8px;
+}
+
+.product-slide-title {
+  background: var(--color-principal);
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+/* En pantallas pequeñas el formato se adapta */
+@media (max-width: 768px) {
+  .product-slide {
+    flex: 0 0 160px;
+  }
+
+  .product-slide img {
+    height: 150px;
+  }
+}

@@ -276,57 +276,239 @@ main a button:hover {
  <script>
   const productosData = [
     {
-      id: "Granizado",
-      nombre: "Granizado de cafe",
-      img: "images/Granizado de cafe.jpg",
-      desc: "Con trozos naturales de fresa.",
-      rappi: "#",
-      reseñas: [
-        { autor: "Laura G.", estrellas: 4, texto: "Muy dulce, me encanta." },
-        { autor: "Juan M.", estrellas: 5, texto: "Perfecto para las onces." }
-      ]
-    },
-    {
-      id: "Guayaba",
-      nombre: "Kumis con Guayaba",
-      img: "images/kumis-guayaba.jpg",
-      desc: "El sabor colombiano por excelencia.",
-      rappi: "#",
-      reseñas: [
-        { autor: "Camila P.", estrellas: 4, texto: "Lo compro cada semana." },
-        { autor: "Andrés R.", estrellas: 5, texto: "Me encanta la textura." }
-      ]
-    },
-    {
-      id: "Durazno",
-      nombre: "Kumis con Durazno",
-      img: "images/kumis1.png",
-      desc: "Con un toque frutal maduro.",
-      rappi: "#",
-      reseñas: [
-        { autor: "Diana S.", estrellas: 5, texto: "El mejor sabor que he probado." }
-      ]
-    },
-    {
-      id: "Mora",
-      nombre: "Kumis con Mora",
-      img: "images/kumis-mora.jpg",
-      desc: "Una explosión de sabor con mora fresca.",
-      rappi: "#",
-      reseñas: [
-        { autor: "Sergio C.", estrellas: 4, texto: "Muy natural y rico." }
-      ]
-    },
-    {
-      id: "Clasico",
-      nombre: "Kumis Clásico",
-      img: "images/kumis-clasico.jpg",
-      desc: "Auténtico y artesanal.",
-      rappi: "#",
-      reseñas: [
-        { autor: "Natalia R.", estrellas: 5, texto: "Sabe a tradición. Delicioso." }
-      ]
-    }
+  id: "Granizado",
+  nombre: "Granizado de café",
+  img: "images/Granizado de cafe.jpg",
+  desc: "Con trozos naturales de fresa. Dulce y refrescante.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Laura M.", estrellas: 5, texto: "Ideal para el calor, delicioso." },
+    { autor: "Carlos H.", estrellas: 4, texto: "Súper refrescante y con buen sabor." }
+  ]
+},
+{
+  id: "Kumis",
+  nombre: "Kumis tradicional",
+  img: "images/productos/kumis1.png",
+  desc: "Auténtico y cremoso, el favorito de siempre.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Diana R.", estrellas: 5, texto: "El mejor kumis artesanal." },
+    { autor: "Felipe J.", estrellas: 5, texto: "Su sabor es incomparable." }
+  ]
+},
+{
+  id: "Affogato",
+  nombre: "Affogato",
+  img: "images/productos/Affogato.webp",
+  desc: "Helado con espresso, una experiencia italiana en cada sorbo.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Camila G.", estrellas: 5, texto: "Perfecto para los amantes del café." }
+  ]
+},
+{
+  id: "Agua",
+  nombre: "Agua en botella",
+  img: "images/productos/Aguaenbotella.webp",
+  desc: "Hidratación pura y natural.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Santiago P.", estrellas: 4, texto: "Siempre fresca y a buena temperatura." }
+  ]
+},
+{
+  id: "Almojabana",
+  nombre: "Almojábana",
+  img: "images/productos/Almojabana.webp",
+  desc: "Bajo en grasa, pero igual de delicioso.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Karen D.", estrellas: 5, texto: "Calientita sabe mejor." },
+    { autor: "Andrés C.", estrellas: 4, texto: "Muy buena, pero me gustaría más grande." }
+  ]
+},
+{
+  id: "Aromatica",
+  nombre: "Aromática natural",
+  img: "images/productos/Aromatica.webp",
+  desc: "Una explosión de sabor herbal.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Paola V.", estrellas: 5, texto: "Relajante y deliciosa." }
+  ]
+},
+{
+  id: "Avena",
+  nombre: "Avena artesanal",
+  img: "images/productos/Avena.webp",
+  desc: "Perfecta para quienes cuidan su dieta.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Luis E.", estrellas: 5, texto: "Sabe como la de mi abuela." }
+  ]
+},
+{
+  id: "Capuccino",
+  nombre: "Capuccino",
+  img: "images/productos/Capuccino.webp",
+  desc: "Cremoso, con un balance perfecto entre leche y café.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Natalia Q.", estrellas: 5, texto: "Mi favorito para las mañanas." }
+  ]
+},
+{
+  id: "Chococono",
+  nombre: "Chococono",
+  img: "images/productos/Choco_Cono.webp",
+  desc: "Helado cubierto de chocolate crujiente.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Esteban M.", estrellas: 4, texto: "Rico pero se derrite rápido." }
+  ]
+},
+{
+  id: "Chocokumis",
+  nombre: "Chocokumis",
+  img: "images/productos/ChocoKumis.webp",
+  desc: "Ácido y dulce, para paladares intensos.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Daniela S.", estrellas: 5, texto: "Una mezcla única, me encanta." }
+  ]
+},
+{
+  id: "Citrica",
+  nombre: "Cítrica",
+  img: "images/productos/Citrica.webp",
+  desc: "Refrescante y con notas de naranja.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Luisa M.", estrellas: 4, texto: "Excelente para acompañar comidas." }
+  ]
+},
+{
+  id: "Empanadadecarne",
+  nombre: "Empanada de carne",
+  img: "images/productos/Empanadadecarne.webp",
+  desc: "Crujiente por fuera, jugosa por dentro.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Sergio R.", estrellas: 5, texto: "Sabor casero, deliciosa." }
+  ]
+},
+{
+  id: "Empanadadepollo",
+  nombre: "Empanada de pollo",
+  img: "images/productos/Empanadadepollo.webp",
+  desc: "El sabor colombiano por excelencia.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Alejandra T.", estrellas: 5, texto: "Mi snack favorito." }
+  ]
+},
+{
+  id: "Empanadallanera",
+  nombre: "Empanada llanera",
+  img: "images/productos/Empanadallanera.webp",
+  desc: "Con sazón típica de los Llanos Orientales.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Juan C.", estrellas: 5, texto: "Auténtico sabor llanero." }
+  ]
+},
+{
+  id: "Galletadeavena",
+  nombre: "Galleta de avena",
+  img: "images/productos/Galletadeavena.webp",
+  desc: "Tradicional y llena de energía natural.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Carolina R.", estrellas: 4, texto: "Perfecta con café o kumis." }
+  ]
+},
+{
+  id: "KumisCono",
+  nombre: "Kumis Cono",
+  img: "images/productos/KumisCono.webp",
+  desc: "La combinación perfecta de kumis y helado.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Mauricio G.", estrellas: 5, texto: "Nunca falla, exquisito." }
+  ]
+},
+{
+  id: "Mantecada",
+  nombre: "Mantecada",
+  img: "images/productos/Mantecada.webp",
+  desc: "Suave, esponjosa y con aroma a mantequilla.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Yuli F.", estrellas: 5, texto: "Ideal para acompañar el café." }
+  ]
+},
+{
+  id: "Pandebono",
+  nombre: "Pandebono",
+  img: "images/productos/Pandebono.webp",
+  desc: "El clásico colombiano recién horneado.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Felipe H.", estrellas: 5, texto: "Caliente es simplemente perfecto." }
+  ]
+},
+{
+  id: "TintoAmericano",
+  nombre: "Tinto Americano",
+  img: "images/productos/TintoAmericano.webp",
+  desc: "Tradicional y lleno de energía natural.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Juliana R.", estrellas: 5, texto: "El café que me levanta cada mañana." }
+  ]
+},
+{
+  id: "Tortadechocolate",
+  nombre: "Torta de chocolate",
+  img: "images/productos/Tortadechocolate.webp",
+  desc: "Densa, húmeda y con intenso sabor a cacao.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Laura P.", estrellas: 5, texto: "Un pedacito de felicidad." }
+  ]
+},
+{
+  id: "Tortadecuajada",
+  nombre: "Torta de cuajada",
+  img: "images/productos/Tortadecuajada.webp",
+  desc: "Suave y cremosa, con sabor a tradición.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Oscar L.", estrellas: 4, texto: "Muy buena con un café." }
+  ]
+},
+{
+  id: "Tortadepan",
+  nombre: "Torta de pan",
+  img: "images/productos/Tortadepan.webp",
+  desc: "El clásico postre colombiano reinventado.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Valentina S.", estrellas: 5, texto: "Me recuerda a la infancia." }
+  ]
+},
+{
+  id: "Yogurt",
+  nombre: "Yogurt artesanal",
+  img: "images/productos/Yogurt.webp",
+  desc: "Cremoso, saludable y natural.",
+  rappi: "#",
+  reseñas: [
+    { autor: "Andrés P.", estrellas: 5, texto: "Excelente textura y sabor natural." }
+  ]
+}
+
   ];
 
   const params = new URLSearchParams(window.location.search);
